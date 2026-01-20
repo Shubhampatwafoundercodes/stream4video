@@ -5,10 +5,12 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:stream4videos/core/res/app_color.dart';
 
 import 'package:stream4videos/core/utils/routes/routes_name.dart';
+import 'package:stream4videos/core/widget/common_confirm_sheet.dart';
 import 'package:stream4videos/features/home/presentation/ui/section/widget/animated_golden_batch.dart';
 import 'package:stream4videos/features/profile/presentation/notifier/profile_notifier.dart';
 
 import 'package:stream4videos/features/share_pref/user_provider.dart';
+import 'package:stream4videos/features/subscription_plan/presentation/notifier/cashfree/create_paying_notifier.dart';
 import 'package:stream4videos/features/subscription_plan/presentation/widget/current_plan_with_add_on_widget.dart';
 
 import 'package:stream4videos/features/subscription_plan/presentation/widget/subscription_plan_widget.dart';
@@ -22,6 +24,56 @@ class MyPlanScreen extends HookConsumerWidget {
   Widget build(BuildContext context ,WidgetRef ref) {
     final t= AppLocalizations.of(context)!;
     final user = ref.watch(userProvider);
+    ref.listen<PaymentState>(paymentProvider, (prev, next) {
+      if (prev?.status == next.status) return;
+
+      if (next.status == PaymentStatus.success) {
+        showModalBottomSheet(
+          context: context,
+          isDismissible: false,
+          enableDrag: false,
+          backgroundColor: Colors.transparent,
+          builder: (_) {
+            return CommonConfirmSheet(
+              imagePath: Assets.iconPaymentSuccess,
+              title: t.payment_success_title,
+              subtitle: t.payment_success_subtitle,
+              confirmText: t.continues,
+              cancelText: "",
+              onConfirm: () {
+              // context.pop();
+              },
+            );
+          },
+        );
+
+
+      }
+
+      if (next.status == PaymentStatus.failed) {
+        showModalBottomSheet(
+          context: context,
+          backgroundColor: Colors.transparent,
+          builder: (_) {
+            return CommonConfirmSheet(
+              imagePath: Assets.iconPaymentFail,
+              title: t.payment_failed_title,
+              subtitle: next.message ?? t.payment_failed_subtitle,
+              confirmText:t.payment_failed_retry,
+              cancelText: t.payment_failed_close,
+              danger: true,
+              onConfirm: () {
+                // context.pop();
+              },
+            );
+          },
+        );
+
+
+      }
+    });
+
+
     final hasActivePlan = user?.hasActivePlan == true;
 
     return SafeArea(

@@ -178,10 +178,10 @@ class FullscreenVideoScreen extends HookConsumerWidget {
                         children:  [
                           Icon(Icons.keyboard_arrow_up, color: Colors.white,size: 18,),
                           AppSizes.spaceW(06),
-                          ConstText(
-                            text:
+                          Text(
                           "More like this",
-                            fontSize: AppConstant.fontSizeZero,
+
+                            // fontSize: AppConstant.fontSizeZero,
                           ),
                         ],
                       ),

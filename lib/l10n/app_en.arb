@@ -190,10 +190,49 @@
       "planName": {},
       "price": {}
     }
+  },
+
+
+  "payment_success_title": "Payment Successful 🎉",
+  "payment_success_subtitle": "Your subscription has been activated successfully",
+
+  "payment_failed_title": "Payment Failed",
+  "payment_failed_subtitle": "Something went wrong. Please try again.",
+  "payment_failed_retry": "Retry",
+  "payment_failed_close": "Close",
+
+
+  "mySubscriptionTitle": "My Subscription",
+  "currentPlan": "CURRENT PLAN",
+  "startDate": "Start Date",
+  "expireDate": "Expire",
+  "quality": "Quality",
+  "devices": "Devices",
+  "ads": "Ads",
+  "yes": "Yes",
+  "no": "No",
+  "addons": "Add-ons",
+
+  "extraDevices": "Extra Devices",
+  "extraDownloads": "Extra Downloads",
+  "addon": "Addon",
+
+  "addonDevicesValue": "Devices",
+  "addonDownloadsValue": "Downloads",
+
+
+  "rechargeAddon": "Recharge Add-On",
+  "payNow": "Pay Now",
+
+  "activePlan": "ACTIVE PLAN",
+  "selected": "SELECTED",
+
+  "addonPriceSubtitle": "{addon} for ₹{price}",
+
+  "@addonPriceSubtitle": {
+    "placeholders": {
+      "addon": {},
+      "price": {}
+    }
   }
-
-
-
-
-
 }

@@ -9,6 +9,8 @@ class Assets {
   static const String iconMyPlan = 'assets/icon/my_plan.png';
   static const String iconNoInternet = 'assets/icon/no_internet.png';
   static const String iconOtts = 'assets/icon/otts.png';
+  static const String iconPaymentFail = 'assets/icon/payment_fail.png';
+  static const String iconPaymentSuccess = 'assets/icon/payment_success.png';
   static const String iconPrenium = 'assets/icon/prenium.png';
   static const String iconSearch = 'assets/icon/search.png';
   static const String imageBhojpuriLang = 'assets/image/bhojpuri_lang.png';

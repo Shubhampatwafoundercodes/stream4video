@@ -10,12 +10,15 @@ import 'package:stream4videos/core/utils/format/date_time_formater.dart';
 import 'package:stream4videos/core/widget/common_screen_container.dart';
 import 'package:stream4videos/core/widget/shimmer/home_screen_shimmer.dart';
 import 'package:stream4videos/features/subscription_plan/presentation/notifier/subscription_plan_notifer.dart';
+import 'package:stream4videos/l10n/app_localizations.dart';
 
 class MyPlanHistory extends HookConsumerWidget {
   const MyPlanHistory({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+
+    final t=AppLocalizations.of(context)!;
     final state = ref.watch(subscriptionNotifierProvider);
     final notifier = ref.read(subscriptionNotifierProvider.notifier);
 
@@ -34,7 +37,7 @@ class MyPlanHistory extends HookConsumerWidget {
       child: Scaffold(
         backgroundColor: AppColors.blackPrimary,
         body: CommonScreenContainer(
-          title: "My Subscription",
+          title: t.mySubscriptionTitle,
           scrollable: false,
           child: state.isLoading
               ? HomeScreenShimmer()
@@ -44,7 +47,7 @@ class MyPlanHistory extends HookConsumerWidget {
             itemBuilder: (_, index) {
               final plan = plans[index];
               final isActive = plan.isActive == true;
-              return _planCard(plan, isActive);
+              return _planCard(plan, isActive,t);
             },
           ),
         ),
@@ -52,7 +55,7 @@ class MyPlanHistory extends HookConsumerWidget {
     );
   }
 
-  Widget _planCard(dynamic plan, bool isActive) {
+  Widget _planCard(dynamic plan, bool isActive,AppLocalizations t) {
     final addons = plan.addons ?? [];
 
     return Container(
@@ -93,7 +96,7 @@ class MyPlanHistory extends HookConsumerWidget {
                 borderRadius: BorderRadius.circular(20.r),
               ),
               child:  ConstText(
-                text: "CURRENT PLAN",
+                text:t.currentPlan,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -116,11 +119,11 @@ class MyPlanHistory extends HookConsumerWidget {
 
           AppSizes.spaceH(10),
 
-          _feature("Start Date", DateTimeFormat.formatShortDate(plan.startAt)),
-          _feature("Expire",DateTimeFormat.formatShortDate(plan.expiresAt)),
-          _feature("Quality", plan.quality),
-          _feature("Devices", plan.finalDeviceLimit?.toString()),
-          _feature("Ads", plan.ads == 1 ? "Yes" : "No"),
+          _feature(t.startDate, DateTimeFormat.formatShortDate(plan.startAt)),
+          _feature(t.expireDate,DateTimeFormat.formatShortDate(plan.expiresAt)),
+          _feature(t.quality, plan.quality),
+          _feature(t.devices, plan.finalDeviceLimit?.toString()),
+          _feature(t.ads, plan.ads == 1 ? t.yes : t.no),
           if (addons.isNotEmpty) ...[
             AppSizes.spaceH(12),
 
@@ -128,14 +131,14 @@ class MyPlanHistory extends HookConsumerWidget {
 
             AppSizes.spaceH(8),
 
-            const ConstText(
-              text: "Add-ons",
+             ConstText(
+              text:t.addons,
               fontWeight: FontWeight.bold,
             ),
 
             AppSizes.spaceH(6),
 
-            ...addons.map((addon) => _addonTile(addon)),
+            ...addons.map((addon) => _addonTile(addon,t)),
           ],
 
 
@@ -158,19 +161,19 @@ class MyPlanHistory extends HookConsumerWidget {
   }
 
 
-  Widget _addonTile(dynamic addon) {
+  Widget _addonTile(dynamic addon,AppLocalizations t) {
     final String title =
     addon.addonKey == "device_limit"
-        ? "Extra Devices"
+        ? t.extraDevices
         : addon.addonKey == "download_limit"
-        ? "Extra Downloads"
-        : "Addon";
+        ? t.extraDownloads
+        : t.addon;
 
     final String valueText =
     addon.addonKey == "device_limit"
-        ? "+${addon.addonValue} Devices"
+        ? "+${addon.addonValue} ${t.addonDevicesValue}"
         : addon.addonKey == "download_limit"
-        ? "+${addon.addonValue} Downloads"
+        ? "+${addon.addonValue} ${t.addonDownloadsValue}"
         : "+${addon.addonValue}";
 
     return Container(

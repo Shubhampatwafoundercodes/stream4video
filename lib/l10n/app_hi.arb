@@ -183,5 +183,48 @@
       "planName": {},
       "price": {}
     }
+  },
+
+
+  "payment_success_title": "भुगतान सफल 🎉",
+  "payment_success_subtitle": "आपकी सदस्यता सफलतापूर्वक सक्रिय हो गई है",
+
+  "payment_failed_title": "भुगतान विफल",
+  "payment_failed_subtitle": "कुछ गलत हो गया। कृपया दोबारा प्रयास करें।",
+  "payment_failed_retry": "पुनः प्रयास करें",
+  "payment_failed_close": "बंद करें",
+
+
+  "mySubscriptionTitle": "मेरी सब्सक्रिप्शन",
+  "currentPlan": "वर्तमान प्लान",
+  "startDate": "शुरू होने की तारीख",
+  "expireDate": "समाप्ति",
+  "quality": "क्वालिटी",
+  "devices": "डिवाइस",
+  "ads": "विज्ञापन",
+  "yes": "हाँ",
+  "no": "नहीं",
+  "addons": "ऐड-ऑन",
+
+  "extraDevices": "अतिरिक्त डिवाइस",
+  "extraDownloads": "अतिरिक्त डाउनलोड",
+  "addon": "ऐड-ऑन",
+
+  "addonDevicesValue": "डिवाइस",
+  "addonDownloadsValue": " डाउनलोड",
+
+  "rechargeAddon": "ऐड-ऑन रिचार्ज करें",
+  "payNow": "अभी भुगतान करें",
+
+  "activePlan": "सक्रिय प्लान",
+  "selected": "चयनित",
+
+  "addonPriceSubtitle": "{addon} ₹{price} में",
+
+  "@addonPriceSubtitle": {
+    "placeholders": {
+      "addon": {},
+      "price": {}
+    }
   }
 }

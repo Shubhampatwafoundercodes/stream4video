@@ -71,6 +71,7 @@ import 'package:stream4videos/features/profile/presentation/notifier/profile_not
 import 'package:stream4videos/features/subscription_plan/presentation/notifier/subscription_plan_notifer.dart';
 import 'package:stream4videos/features/subscription_plan/presentation/notifier/cashfree/create_paying_notifier.dart';
 import 'package:stream4videos/generated/assets.dart';
+import 'package:stream4videos/l10n/app_localizations.dart';
 
 class CurrentPlanWithAddOnWidget extends HookConsumerWidget {
   const CurrentPlanWithAddOnWidget({super.key});
@@ -78,6 +79,8 @@ class CurrentPlanWithAddOnWidget extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final selectedAddonIndex = useState<int>(0);
+
+    final t=AppLocalizations.of(context)!;
 
     final categoryState = ref.watch(categoryNotifierProvider);
     final profileState = ref.watch(profileNotifierProvider);
@@ -118,7 +121,7 @@ class CurrentPlanWithAddOnWidget extends HookConsumerWidget {
 
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 15.w),
-            child: _currentPlanCard(currentPlan),
+            child: _currentPlanCard(currentPlan,t),
           ),
 
           AppSizes.spaceH(24),
@@ -129,7 +132,7 @@ class CurrentPlanWithAddOnWidget extends HookConsumerWidget {
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: ConstText(
-                  text: "Add-Ons",
+                  text: t.addons,
                   fontSize: AppConstant.fontSizeThree,
                   fontWeight: AppConstant.semiBold,
                 ),
@@ -145,7 +148,7 @@ class CurrentPlanWithAddOnWidget extends HookConsumerWidget {
                 scrollDirection: Axis.horizontal,
                 itemCount: addons.length,
                 separatorBuilder: (_, __) => AppSizes.spaceW(16),
-                itemBuilder: (_, i) => _addonCard(
+                itemBuilder: (_, i) => _addonCard(t,
                   addon: addons[i],
                   active: selectedAddonIndex.value == i,
                   onTap: () => selectedAddonIndex.value = i,
@@ -164,11 +167,10 @@ class CurrentPlanWithAddOnWidget extends HookConsumerWidget {
                   context: context,
                   backgroundColor: Colors.transparent,
                   builder: (_) => CommonConfirmSheet(
-                    title: "Recharge Add-On",
-                    subtitle:
-                    "${addon.name} for ₹${addon.price}",
-                    confirmText: "Pay Now",
-                    cancelText: "Cancel",
+                    title: t.rechargeAddon,
+                    subtitle:t.addonPriceSubtitle(addon.name.toString(), addon.price.toString()),
+                    confirmText: t.payNow,
+                    cancelText:t.plan_buy_cancel,
                     onConfirm: () async {
                       GlobalLoader.show(context);
 
@@ -186,7 +188,7 @@ class CurrentPlanWithAddOnWidget extends HookConsumerWidget {
                 );
               },
               child:  ConstText(
-                text: "Recharge Add-On",
+                text: t.rechargeAddon,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
               ),
@@ -200,7 +202,7 @@ class CurrentPlanWithAddOnWidget extends HookConsumerWidget {
   }
 
 
-  Widget _currentPlanCard(dynamic plan) {
+  Widget _currentPlanCard(dynamic plan,AppLocalizations t) {
     return Container(
       padding: EdgeInsets.all(18.w),
       decoration: BoxDecoration(
@@ -229,7 +231,7 @@ class CurrentPlanWithAddOnWidget extends HookConsumerWidget {
               borderRadius: BorderRadius.circular(20),
             ),
             child:  ConstText(
-              text: "ACTIVE PLAN",
+              text: t.activePlan,
               fontSize: 10,
               fontWeight: FontWeight.bold,
               color: Colors.white,
@@ -267,10 +269,10 @@ class CurrentPlanWithAddOnWidget extends HookConsumerWidget {
             spacing: 8,
             runSpacing: 8,
             children: [
-              _chip("Quality", plan.quality),
-              _chip("Devices", "${plan.finalDeviceLimit}"),
-              _chip("Downloads", "${plan.downloadsAllowed}"),
-              _chip("Ads", plan.ads == 1 ? "Yes" : "No"),
+              _chip(t.quality, plan.quality),
+              _chip(t.devices, "${plan.finalDeviceLimit}"),
+              _chip(t.addonDownloadsValue, "${plan.downloadsAllowed}"),
+              _chip(t.ads, plan.ads == 1 ? t.yes: t.no),
             ],
           ),
         ],
@@ -293,10 +295,12 @@ class CurrentPlanWithAddOnWidget extends HookConsumerWidget {
     );
   }
 
-  Widget _addonCard({
+  Widget _addonCard(
+      AppLocalizations t,{
     required dynamic addon,
     required bool active,
     required VoidCallback onTap,
+
   }) {
     return GestureDetector(
       onTap: onTap,
@@ -339,8 +343,8 @@ class CurrentPlanWithAddOnWidget extends HookConsumerWidget {
                   color: const Color(0xFFB11226),
                   borderRadius: BorderRadius.circular(20),
                 ),
-                child: const ConstText(
-                  text: "SELECTED",
+                child:  ConstText(
+                  text: t.selected,
                   fontSize: 9,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
@@ -367,7 +371,7 @@ class CurrentPlanWithAddOnWidget extends HookConsumerWidget {
                 borderRadius: BorderRadius.circular(20),
               ),
               child: ConstText(
-                text: "+${addon.addonValue} Device",
+                text: "+${addon.addonValue} ${t.addonDevicesValue}",
                 fontSize: 11,
                 color: Colors.white70,
               ),

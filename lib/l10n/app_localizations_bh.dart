@@ -363,4 +363,84 @@ class AppLocalizationsBh extends AppLocalizations {
 
   @override
   String get badge_secure => 'सुरक्षित';
+
+  @override
+  String get payment_success_title => 'Payment Successful 🎉';
+
+  @override
+  String get payment_success_subtitle => 'Your subscription has been activated successfully';
+
+  @override
+  String get payment_failed_title => 'Payment Failed';
+
+  @override
+  String get payment_failed_subtitle => 'Something went wrong. Please try again.';
+
+  @override
+  String get payment_failed_retry => 'Retry';
+
+  @override
+  String get payment_failed_close => 'Close';
+
+  @override
+  String get mySubscriptionTitle => 'My Subscription';
+
+  @override
+  String get currentPlan => 'CURRENT PLAN';
+
+  @override
+  String get startDate => 'Start Date';
+
+  @override
+  String get expireDate => 'Expire';
+
+  @override
+  String get quality => 'Quality';
+
+  @override
+  String get devices => 'Devices';
+
+  @override
+  String get ads => 'Ads';
+
+  @override
+  String get yes => 'Yes';
+
+  @override
+  String get no => 'No';
+
+  @override
+  String get addons => 'Add-ons';
+
+  @override
+  String get extraDevices => 'Extra Devices';
+
+  @override
+  String get extraDownloads => 'Extra Downloads';
+
+  @override
+  String get addon => 'Addon';
+
+  @override
+  String get addonDevicesValue => 'Devices';
+
+  @override
+  String get addonDownloadsValue => 'Downloads';
+
+  @override
+  String get rechargeAddon => 'Recharge Add-On';
+
+  @override
+  String get payNow => 'Pay Now';
+
+  @override
+  String get activePlan => 'ACTIVE PLAN';
+
+  @override
+  String get selected => 'SELECTED';
+
+  @override
+  String addonPriceSubtitle(Object addon, Object price) {
+    return '$addon for ₹$price';
+  }
 }

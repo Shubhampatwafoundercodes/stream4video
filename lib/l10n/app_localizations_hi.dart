@@ -363,4 +363,84 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get badge_secure => 'सुरक्षित';
+
+  @override
+  String get payment_success_title => 'भुगतान सफल 🎉';
+
+  @override
+  String get payment_success_subtitle => 'आपकी सदस्यता सफलतापूर्वक सक्रिय हो गई है';
+
+  @override
+  String get payment_failed_title => 'भुगतान विफल';
+
+  @override
+  String get payment_failed_subtitle => 'कुछ गलत हो गया। कृपया दोबारा प्रयास करें।';
+
+  @override
+  String get payment_failed_retry => 'पुनः प्रयास करें';
+
+  @override
+  String get payment_failed_close => 'बंद करें';
+
+  @override
+  String get mySubscriptionTitle => 'मेरी सब्सक्रिप्शन';
+
+  @override
+  String get currentPlan => 'वर्तमान प्लान';
+
+  @override
+  String get startDate => 'शुरू होने की तारीख';
+
+  @override
+  String get expireDate => 'समाप्ति';
+
+  @override
+  String get quality => 'क्वालिटी';
+
+  @override
+  String get devices => 'डिवाइस';
+
+  @override
+  String get ads => 'विज्ञापन';
+
+  @override
+  String get yes => 'हाँ';
+
+  @override
+  String get no => 'नहीं';
+
+  @override
+  String get addons => 'ऐड-ऑन';
+
+  @override
+  String get extraDevices => 'अतिरिक्त डिवाइस';
+
+  @override
+  String get extraDownloads => 'अतिरिक्त डाउनलोड';
+
+  @override
+  String get addon => 'ऐड-ऑन';
+
+  @override
+  String get addonDevicesValue => 'डिवाइस';
+
+  @override
+  String get addonDownloadsValue => ' डाउनलोड';
+
+  @override
+  String get rechargeAddon => 'ऐड-ऑन रिचार्ज करें';
+
+  @override
+  String get payNow => 'अभी भुगतान करें';
+
+  @override
+  String get activePlan => 'सक्रिय प्लान';
+
+  @override
+  String get selected => 'चयनित';
+
+  @override
+  String addonPriceSubtitle(Object addon, Object price) {
+    return '$addon ₹$price में';
+  }
 }

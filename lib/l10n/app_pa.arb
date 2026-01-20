@@ -171,5 +171,48 @@
       "planName": {},
       "price": {}
     }
+  },
+
+
+  "payment_success_title": "ਭੁਗਤਾਨ ਸਫਲ 🎉",
+  "payment_success_subtitle": "ਤੁਹਾਡੀ ਸਬਸਕ੍ਰਿਪਸ਼ਨ ਸਫਲਤਾਪੂਰਵਕ ਐਕਟੀਵੇਟ ਹੋ ਗਈ ਹੈ",
+
+  "payment_failed_title": "ਭੁਗਤਾਨ ਅਸਫਲ",
+  "payment_failed_subtitle": "ਕੁਝ ਗਲਤ ਹੋ ਗਿਆ। ਕਿਰਪਾ ਕਰਕੇ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।",
+  "payment_failed_retry": "ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ",
+  "payment_failed_close": "ਬੰਦ ਕਰੋ",
+
+
+  "mySubscriptionTitle": "ਮੇਰੀ ਸਬਸਕ੍ਰਿਪਸ਼ਨ",
+  "currentPlan": "ਮੌਜੂਦਾ ਪਲਾਨ",
+  "startDate": "ਸ਼ੁਰੂ ਦੀ ਤਾਰੀਖ",
+  "expireDate": "ਮਿਆਦ ਖਤਮ",
+  "quality": "ਗੁਣਵੱਤਾ",
+  "devices": "ਡਿਵਾਈਸ",
+  "ads": "ਇਸ਼ਤਿਹਾਰ",
+  "yes": "ਹਾਂ",
+  "no": "ਨਹੀਂ",
+  "addons": "ਐਡ-ਆਨ",
+
+  "extraDevices": "ਵਾਧੂ ਡਿਵਾਈਸ",
+  "extraDownloads": "ਵਾਧੂ ਡਾਊਨਲੋਡ",
+  "addon": "ਐਡ-ਆਨ",
+
+  "addonDevicesValue": "ਡਿਵਾਈਸ",
+  "addonDownloadsValue": "ਡਾਊਨਲੋਡ",
+
+  "rechargeAddon": "ਐਡ-ਆਨ ਰੀਚਾਰਜ",
+  "payNow": "ਹੁਣ ਭੁਗਤਾਨ ਕਰੋ",
+
+  "activePlan": "ਸਕ੍ਰਿਆ ਪਲਾਨ",
+  "selected": "ਚੁਣਿਆ ਹੋਇਆ",
+
+  "addonPriceSubtitle": "{addon} ₹{price} ਲਈ",
+
+  "@addonPriceSubtitle": {
+    "placeholders": {
+      "addon": {},
+      "price": {}
+    }
   }
 }

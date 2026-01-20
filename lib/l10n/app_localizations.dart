@@ -794,6 +794,162 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Secure'**
   String get badge_secure;
+
+  /// No description provided for @payment_success_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment Successful 🎉'**
+  String get payment_success_title;
+
+  /// No description provided for @payment_success_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your subscription has been activated successfully'**
+  String get payment_success_subtitle;
+
+  /// No description provided for @payment_failed_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment Failed'**
+  String get payment_failed_title;
+
+  /// No description provided for @payment_failed_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong. Please try again.'**
+  String get payment_failed_subtitle;
+
+  /// No description provided for @payment_failed_retry.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get payment_failed_retry;
+
+  /// No description provided for @payment_failed_close.
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get payment_failed_close;
+
+  /// No description provided for @mySubscriptionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'My Subscription'**
+  String get mySubscriptionTitle;
+
+  /// No description provided for @currentPlan.
+  ///
+  /// In en, this message translates to:
+  /// **'CURRENT PLAN'**
+  String get currentPlan;
+
+  /// No description provided for @startDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Start Date'**
+  String get startDate;
+
+  /// No description provided for @expireDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Expire'**
+  String get expireDate;
+
+  /// No description provided for @quality.
+  ///
+  /// In en, this message translates to:
+  /// **'Quality'**
+  String get quality;
+
+  /// No description provided for @devices.
+  ///
+  /// In en, this message translates to:
+  /// **'Devices'**
+  String get devices;
+
+  /// No description provided for @ads.
+  ///
+  /// In en, this message translates to:
+  /// **'Ads'**
+  String get ads;
+
+  /// No description provided for @yes.
+  ///
+  /// In en, this message translates to:
+  /// **'Yes'**
+  String get yes;
+
+  /// No description provided for @no.
+  ///
+  /// In en, this message translates to:
+  /// **'No'**
+  String get no;
+
+  /// No description provided for @addons.
+  ///
+  /// In en, this message translates to:
+  /// **'Add-ons'**
+  String get addons;
+
+  /// No description provided for @extraDevices.
+  ///
+  /// In en, this message translates to:
+  /// **'Extra Devices'**
+  String get extraDevices;
+
+  /// No description provided for @extraDownloads.
+  ///
+  /// In en, this message translates to:
+  /// **'Extra Downloads'**
+  String get extraDownloads;
+
+  /// No description provided for @addon.
+  ///
+  /// In en, this message translates to:
+  /// **'Addon'**
+  String get addon;
+
+  /// No description provided for @addonDevicesValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Devices'**
+  String get addonDevicesValue;
+
+  /// No description provided for @addonDownloadsValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Downloads'**
+  String get addonDownloadsValue;
+
+  /// No description provided for @rechargeAddon.
+  ///
+  /// In en, this message translates to:
+  /// **'Recharge Add-On'**
+  String get rechargeAddon;
+
+  /// No description provided for @payNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay Now'**
+  String get payNow;
+
+  /// No description provided for @activePlan.
+  ///
+  /// In en, this message translates to:
+  /// **'ACTIVE PLAN'**
+  String get activePlan;
+
+  /// No description provided for @selected.
+  ///
+  /// In en, this message translates to:
+  /// **'SELECTED'**
+  String get selected;
+
+  /// No description provided for @addonPriceSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'{addon} for ₹{price}'**
+  String addonPriceSubtitle(Object addon, Object price);
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
