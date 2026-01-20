@@ -1,0 +1,175 @@
+{
+  "chooseLanguage": "ਆਪਣੀ ਭਾਸ਼ਾ ਚੁਣੋ",
+  "continues": "ਜਾਰੀ ਰੱਖੋ",
+  "hindi": "ਹਿੰਦੀ",
+  "english": "ਅੰਗ੍ਰੇਜ਼ੀ",
+  "punjabi": "ਪੰਜਾਬੀ",
+  "bhojpuri": "ਭੋਜਪੁਰੀ",
+
+  "login_skip": "ਛੱਡੋ",
+  "login_title": "ਲਾਗਇਨ ਜਾਂ ਸਾਈਨ ਅੱਪ ਕਰੋ",
+  "login_mobileLabel": "ਮੋਬਾਈਲ ਨੰਬਰ*",
+  "login_mobileHint": "ਮੋਬਾਈਲ ਨੰਬਰ ਦਰਜ ਕਰੋ",
+  "login_otpInfo": "ਅਸੀਂ ਤੁਹਾਡੇ ਮੋਬਾਈਲ ਨੰਬਰ ਦੀ ਪੁਸ਼ਟੀ ਲਈ ਇੱਕ OTP ਭੇਜਾਂਗੇ",
+  "login_sendingOtp": "OTP ਭੇਜਿਆ ਜਾ ਰਿਹਾ ਹੈ...",
+
+  "otp_title": "OTP ਦਰਜ ਕਰੋ",
+  "otp_sent_to": "+91 {mobile} ਤੇ OTP ਭੇਜਿਆ ਗਿਆ ਹੈ",
+  "otp_resend_in": "{seconds} ਸਕਿੰਟ ਵਿੱਚ OTP ਦੁਬਾਰਾ ਭੇਜੋ",
+  "otp_didnt_receive": "OTP ਨਹੀਂ ਮਿਲਿਆ?",
+  "otp_resend_now": "ਹੁਣੇ ਦੁਬਾਰਾ ਭੇਜੋ",
+  "otp_resending": "OTP ਮੁੜ ਭੇਜਿਆ ਜਾ ਰਿਹਾ ਹੈ...",
+  "otp_verify": "ਤਸਦੀਕ ਕਰੋ",
+  "otp_invalid_length": "6 ਅੰਕਾਂ ਵਾਲਾ ਠੀਕ OTP ਦਰਜ ਕਰੋ",
+  "otp_invalid": "ਗਲਤ OTP",
+  "otp_verifying": "OTP ਦੀ ਜਾਂਚ ਹੋ ਰਹੀ ਹੈ...",
+  "otp_resend_failed": "OTP ਮੁੜ ਭੇਜਣ ਵਿੱਚ ਅਸਫਲ",
+
+  "@otp_sent_to": {
+    "placeholders": {
+      "mobile": {}
+    }
+  },
+  "@otp_resend_in": {
+    "placeholders": {
+      "seconds": {}
+    }
+  },
+
+  "auth_accountBlocked_title": "ਖਾਤਾ ਬਲੌਕ ਕਰ ਦਿੱਤਾ ਗਿਆ ਹੈ",
+  "auth_accountBlocked_subtitle": "ਤੁਹਾਡਾ ਖਾਤਾ ਬਲੌਕ ਕਰ ਦਿੱਤਾ ਗਿਆ ਹੈ। ਹੋਰ ਜਾਣਕਾਰੀ ਲਈ ਸਹਾਇਤਾ ਨਾਲ ਸੰਪਰਕ ਕਰੋ।",
+  "auth_accountBlocked_confirm": "ਸਹਾਇਤਾ ਨਾਲ ਸੰਪਰਕ ਕਰੋ",
+
+  "auth_deviceLimit_title": "ਡਿਵਾਈਸ ਸੀਮਾ ਪੂਰੀ ਹੋ ਗਈ ਹੈ",
+  "auth_deviceLimit_subtitle": "ਤੁਹਾਡਾ ਖਾਤਾ ਪਹਿਲਾਂ ਹੀ ਕਿਸੇ ਹੋਰ ਡਿਵਾਈਸ ਤੇ ਲਾਗਇਨ ਹੈ। ਜਾਰੀ ਰੱਖਣ ਲਈ ਉੱਥੋਂ ਲਾਗਆਉਟ ਕਰੋ।",
+
+  "auth_genericError": "ਕੁਝ ਗਲਤ ਹੋ ਗਿਆ। ਕਿਰਪਾ ਕਰਕੇ ਮੁੜ ਕੋਸ਼ਿਸ਼ ਕਰੋ।",
+
+  "bottom_home": "ਹੋਮ",
+  "bottom_free": "ਮੁਫ਼ਤ",
+  "bottom_premium": "ਪ੍ਰੀਮੀਅਮ",
+  "bottom_search": "ਖੋਜ",
+  "bottom_myplan": "ਮੇਰਾ ਪਲਾਨ",
+
+  "exit_title": "ਐਪ ਬੰਦ ਕਰੋ",
+  "exit_subtitle": "ਕੀ ਤੁਸੀਂ ਸੱਚਮੁੱਚ ਐਪ ਬੰਦ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ?",
+  "exit_confirm": "ਬੰਦ ਕਰੋ",
+  "exit_cancel": "ਰੱਦ ਕਰੋ",
+
+  "search_hint": "ਫਿਲਮਾਂ, ਸ਼ੋਅ, ਕਲਾਕਾਰ ਖੋਜੋ",
+  "search_trending_title": "ਟ੍ਰੈਂਡਿੰਗ ਖੋਜਾਂ",
+  "search_no_results": "ਕੋਈ ਨਤੀਜਾ ਨਹੀਂ ਮਿਲਿਆ",
+
+  "watchlist_title": "ਮੇਰੀ ਵਾਚਲਿਸਟ",
+  "watchlist_empty": "ਵਾਚਲਿਸਟ ਵਿੱਚ ਕੋਈ ਆਈਟਮ ਨਹੀਂ",
+  "watchlist_watch_now": "ਹੁਣ ਦੇਖੋ",
+  "watchlist_see_all": "ਸਭ ਵੇਖੋ",
+
+  "detail_play": "ਚਲਾਓ",
+  "detail_episodes": "ਐਪੀਸੋਡ",
+
+  "detail_watchlist_added": "ਸ਼ਾਮਲ ਹੋ ਗਿਆ",
+  "detail_watchlist_add": "ਵਾਚਲਿਸਟ",
+
+  "detail_cast_crew": "ਕਲਾਕਾਰ ਅਤੇ ਟੀਮ",
+  "detail_more_like_this": "ਇਸ ਵਰਗਾ ਹੋਰ",
+
+  "detail_premium_badge": "ਪ੍ਰੀਮੀਅਮ •",
+  "detail_free_badge": "ਮੁਫ਼ਤ •",
+
+  "detail_select_season": "ਸੀਜ਼ਨ ਚੁਣੋ",
+
+  "profile_edit_title": "ਪ੍ਰੋਫਾਈਲ ਸੋਧੋ",
+
+  "profile_registered_mobile": "ਰਜਿਸਟਰ ਕੀਤਾ ਮੋਬਾਈਲ ਨੰਬਰ",
+  "profile_mobile_format": "+91-{mobile}",
+  "profile_guest_message": "ਸੁਆਗਤ ਹੈ! ਸਾਰੇ ਫੀਚਰ ਖੋਲ੍ਹਣ ਲਈ ਸਾਈਨ ਇਨ ਕਰੋ",
+
+  "profile_full_name_label": "ਪੂਰਾ ਨਾਮ",
+  "profile_full_name_hint": "ਆਪਣਾ ਨਾਮ ਦਰਜ ਕਰੋ",
+
+  "profile_email_label": "ਈਮੇਲ ਪਤਾ",
+  "profile_email_hint": "ਈਮੇਲ ਪਤਾ ਦਰਜ ਕਰੋ",
+
+  "profile_login_continue": "ਜਾਰੀ ਰੱਖਣ ਲਈ ਲਾਗਇਨ ਕਰੋ",
+  "profile_save_changes": "ਬਦਲਾਅ ਸੇਵ ਕਰੋ",
+
+  "profile_updating": "ਅੱਪਡੇਟ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ...",
+  "help_title": "ਮਦਦ ਕੇਂਦਰ",
+  "profile_title": "ਪ੍ਰੋਫਾਈਲ",
+  "profile_greeting_guest": "ਸਤ ਸ੍ਰੀ ਅਕਾਲ 👋",
+  "profile_edit": "ਸੋਧੋ",
+
+  "profile_plans_offers": "ਪਲਾਨ ਅਤੇ\nਆਫ਼ਰ",
+  "profile_help_center": "ਮਦਦ\nਕੇਂਦਰ",
+  "profile_settings": "ਸੈਟਿੰਗ",
+
+  "profile_watchlist_title": "ਵਾਚਲਿਸਟ",
+  "profile_watchlist_view_all": "ਸਭ ਵੇਖੋ",
+
+  "settings_title": "ਸੈਟਿੰਗ",
+
+  "settings_watchlist": "ਵਾਚਲਿਸਟ",
+  "settings_notifications": "ਸੂਚਨਾਵਾਂ",
+  "settings_language": "ਭਾਸ਼ਾ",
+  "settings_logout": "ਲਾਗਆਉਟ",
+  "settings_delete_account": "ਖਾਤਾ ਮਿਟਾਓ",
+
+  "settings_logout_confirm_title": "ਕੀ ਤੁਸੀਂ ਲਾਗਆਉਟ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ?",
+  "settings_logout_confirm_button": "ਲਾਗਆਉਟ",
+
+  "active_device_title": "ਸਕ੍ਰਿਆ ਡਿਵਾਈਸ",
+
+  "active_device_loading_error": "ਡਿਵਾਈਸ ਲੋਡ ਕਰਨ ਵਿੱਚ ਅਸਫਲ",
+
+  "active_device_limit_title": "ਡਿਵਾਈਸ ਸੀਮਾ ਪੂਰੀ ਹੋ ਗਈ ਹੈ",
+  "active_device_limit_desc": "ਤੁਹਾਡੀ ਸਬਸਕ੍ਰਿਪਸ਼ਨ ਕੁਝ ਗਿਣਤੀ ਦੇ ਡਿਵਾਈਸਾਂ ਦੀ ਆਗਿਆ ਦਿੰਦੀ ਹੈ। ਜਾਰੀ ਰੱਖਣ ਲਈ ਹੇਠਾਂ ਦਿੱਤੇ ਡਿਵਾਈਸਾਂ ਵਿੱਚੋਂ ਕਿਸੇ ਇੱਕ ਤੋਂ ਲਾਗਆਉਟ ਕਰੋ।",
+  "active_device_limit_note": "ਲਾਗਆਉਟ ਕਰਨ ਤੋਂ ਬਾਅਦ ਤੁਸੀਂ ਕਿਸੇ ਵੀ ਡਿਵਾਈਸ ਤੇ ਦੁਬਾਰਾ ਸਾਈਨ ਇਨ ਕਰ ਸਕਦੇ ਹੋ।",
+
+  "active_device_your_devices": "ਤੁਹਾਡੇ ਡਿਵਾਈਸ",
+  "active_device_other_devices": "ਹੋਰ ਡਿਵਾਈਸ",
+
+  "active_device_logout": "ਲਾਗਆਉਟ",
+  "active_device_current": "ਇਹ ਡਿਵਾਈਸ",
+
+  "active_device_logout_confirm_title": "ਡਿਵਾਈਸ ਤੋਂ ਲਾਗਆਉਟ ਕਰੋ?",
+  "active_device_logout_confirm_subtitle": "ਇਹ ਡਿਵਾਈਸ ਤੁਹਾਡੇ ਖਾਤੇ ਤੋਂ ਲਾਗਆਉਟ ਹੋ ਜਾਵੇਗਾ।",
+  "active_device_logout_confirm_button": "ਲਾਗਆਉਟ",
+
+  "active_device_logout_loading": "ਲਾਗਆਉਟ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ...",
+
+  "active_device_already_logged_in_subtitle": "ਤੁਹਾਡਾ ਖਾਤਾ ਪਹਿਲਾਂ ਹੀ ਕਿਸੇ ਹੋਰ ਡਿਵਾਈਸ ਤੇ ਲਾਗਇਨ ਹੈ। ਜਾਰੀ ਰੱਖਣ ਲਈ ਉੱਥੋਂ ਲਾਗਆਉਟ ਕਰੋ।",
+
+  "plan_title": "ਮੇਰੇ ਪਲਾਨ",
+
+  "plan_no_available": "ਕੋਈ ਪਲਾਨ ਉਪਲਬਧ ਨਹੀਂ",
+
+  "plan_buy_title": "ਸਬਸਕ੍ਰਿਪਸ਼ਨ ਖਰੀਦੋ",
+  "plan_buy_subtitle": "{planName} ਨਾਲ ₹{price} ਲਈ ਜਾਰੀ ਰੱਖੋ?",
+  "plan_buy_confirm": "ਭੁਗਤਾਨ ਕਰੋ",
+  "plan_buy_cancel": "ਰੱਦ ਕਰੋ",
+
+  "plan_subscribe_now": "ਹੁਣ ਸਬਸਕ੍ਰਾਈਬ ਕਰੋ",
+  "plan_no_commitment": "ਕੋਈ ਬੰਨ੍ਹ ਨਹੀਂ, ਕਦੇ ਵੀ ਰੱਦ ਕਰੋ",
+
+  "plan_feature_quality": "ਗੁਣਵੱਤਾ",
+  "plan_feature_devices": "ਡਿਵਾਈਸ",
+  "plan_feature_downloads": "ਡਾਊਨਲੋਡ",
+  "plan_feature_ads": "ਵਿਗਿਆਪਨ",
+  "plan_feature_yes": "ਹਾਂ",
+  "plan_feature_no": "ਨਹੀਂ",
+
+  "badge_unlimited": "ਅਣਲਿਮਿਟਡ",
+  "badge_maximum": "ਵੱਧ ਤੋਂ ਵੱਧ",
+  "badge_priority": "ਤਰਜੀਹ",
+  "badge_advanced": "ਐਡਵਾਂਸ",
+  "badge_standard": "ਸਟੈਂਡਰਡ",
+  "badge_secure": "ਸੁਰੱਖਿਅਤ",
+
+  "@plan_buy_subtitle": {
+    "placeholders": {
+      "planName": {},
+      "price": {}
+    }
+  }
+}

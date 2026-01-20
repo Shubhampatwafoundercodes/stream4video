@@ -1,0 +1,199 @@
+{
+
+  "chooseLanguage": "Choose your language",
+  "continues": "Continue",
+  "hindi": "Hindi",
+  "english": "English",
+  "punjabi": "Punjabi",
+  "bhojpuri": "Bhojpuri",
+
+  "login_skip": "Skip",
+  "login_title": "Login or Signup",
+  "login_mobileLabel": "Mobile Number*",
+  "login_mobileHint": "Enter mobile number",
+  "login_otpInfo": "We'll send you an OTP to confirm your mobile number",
+  "login_sendingOtp": "Sending OTP...",
+
+
+
+  "otp_title": "Enter OTP",
+  "otp_sent_to": "OTP sent to +91 {mobile}",
+  "otp_resend_in": "Resend OTP in {seconds} sec",
+  "otp_didnt_receive": "Didn’t receive OTP?",
+  "otp_resend_now": "Resend Now",
+  "otp_resending": "Resending OTP...",
+  "otp_verify": "Verify",
+  "otp_invalid_length": "Enter valid 6 digit OTP",
+  "otp_invalid": "Invalid OTP",
+  "otp_verifying": "Verifying OTP...",
+  "otp_resend_failed": "Failed to resend OTP",
+
+  "@otp_sent_to": {
+    "placeholders": {
+      "mobile": {}
+    }
+  },
+  "@otp_resend_in": {
+    "placeholders": {
+      "seconds": {}
+    }
+  },
+
+
+  "auth_accountBlocked_title": "Account Blocked",
+  "auth_accountBlocked_subtitle":
+  "Your account has been blocked. Please contact support for more information.",
+  "auth_accountBlocked_confirm": "Contact Support",
+
+  "auth_deviceLimit_title": "Device limit reached",
+  "auth_deviceLimit_subtitle":
+  "Your account is already logged in on another device. Log out from an existing device to continue.",
+
+  "auth_genericError": "Something went wrong. Please try again",
+
+
+  "bottom_home": "Home",
+  "bottom_free": "Free",
+  "bottom_premium": "Premium",
+  "bottom_search": "Search",
+  "bottom_myplan": "My Plan",
+
+  "exit_title": "Exit App",
+  "exit_subtitle": "Are you sure you want to exit?",
+  "exit_confirm": "Exit",
+  "exit_cancel": "Cancel",
+
+  "search_hint": "Search movies, shows, actors",
+  "search_trending_title": "Trending Searches",
+  "search_no_results": "No results found",
+
+
+  "watchlist_title": "My Watchlist",
+  "watchlist_empty": "No items in Watchlist",
+  "watchlist_watch_now": "Watch Now",
+  "watchlist_see_all": "See All",
+
+  "detail_play": "Play",
+  "detail_episodes": "Episodes",
+
+  "detail_watchlist_added": "Added",
+  "detail_watchlist_add": "Watchlist",
+
+  "detail_cast_crew": "Cast & Crew",
+  "detail_more_like_this": "More like this",
+
+  "detail_premium_badge": "PREMIUM •",
+  "detail_free_badge": "FREE •",
+
+  "detail_select_season": "Select Season",
+
+
+  "profile_edit_title": "Edit Profile",
+
+  "profile_registered_mobile": "Registered mobile number",
+  "profile_mobile_format": "+91-{mobile}",
+  "profile_guest_message": "Welcome! Sign in to unlock all features",
+
+  "profile_full_name_label": "Full Name",
+  "profile_full_name_hint": "Enter your name",
+
+  "profile_email_label": "Email Address",
+  "profile_email_hint": "Enter email address",
+
+  "profile_login_continue": "Login to continue",
+  "profile_save_changes": "Save Changes",
+
+  "profile_updating": "Updating...",
+  "help_title": "Help Center",
+  "profile_title": "Profile Screen",
+  "profile_greeting_guest": "Hi there 👋",
+  "profile_edit": "Edit",
+
+
+  "profile_plans_offers": "Plans &\nOffers",
+  "profile_help_center": "Help\nCenter",
+  "profile_settings": "Settings",
+
+  "profile_watchlist_title": "Watchlist",
+  "profile_watchlist_view_all": "View all",
+
+
+  "settings_title": "Settings",
+
+  "settings_watchlist": "Watchlist",
+  "settings_notifications": "Notifications",
+  "settings_language": "Language",
+  "settings_logout": "Logout",
+  "settings_delete_account": "Delete Account",
+
+  "settings_logout_confirm_title": "Are you sure you want to logout?",
+  "settings_logout_confirm_button": "Log out",
+
+
+  "active_device_title": "Active Devices",
+
+  "active_device_loading_error": "Failed to load devices",
+
+  "active_device_limit_title": "Device limit reached",
+  "active_device_limit_desc":
+  "Your current subscription allows a limited number of active devices. To continue, please log out from one of the devices listed below.",
+  "active_device_limit_note":
+  "You can sign in again on any device after logging out.",
+
+  "active_device_your_devices": "Your Devices",
+  "active_device_other_devices": "Other Devices",
+
+  "active_device_logout": "Logout",
+  "active_device_current": "This device",
+
+  "active_device_logout_confirm_title": "Logout device?",
+  "active_device_logout_confirm_subtitle":
+  "This device will be logged out from your account.",
+  "active_device_logout_confirm_button": "Logout",
+
+  "active_device_logout_loading": "Logging out...",
+
+  "active_device_already_logged_in_subtitle":
+  "Your account is already logged in on another device. Log out from an existing device to continue.",
+
+
+  "plan_title": "My Plans",
+
+  "plan_no_available": "No Plans Available",
+
+  "plan_buy_title": "Buy Subscription",
+  "plan_buy_subtitle": "Continue with {planName} for ₹{price}?",
+  "plan_buy_confirm": "Proceed to Pay",
+  "plan_buy_cancel": "Cancel",
+
+  "plan_subscribe_now": "Subscribe Now",
+  "plan_no_commitment": "No commitment, cancel anytime",
+
+
+  "plan_feature_quality": "Quality",
+  "plan_feature_devices": "Devices",
+  "plan_feature_downloads": "Downloads",
+  "plan_feature_ads": "Ads",
+  "plan_feature_yes": "Yes",
+  "plan_feature_no": "No",
+
+
+  "badge_unlimited": "Unlimited",
+  "badge_maximum": "Maximum",
+  "badge_priority": "Priority",
+  "badge_advanced": "Advanced",
+  "badge_standard": "Standard",
+  "badge_secure": "Secure",
+
+  "@plan_buy_subtitle": {
+    "placeholders": {
+      "planName": {},
+      "price": {}
+    }
+  }
+
+
+
+
+
+}
