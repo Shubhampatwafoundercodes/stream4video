@@ -102,12 +102,14 @@ class _HomeHeroSliderState extends ConsumerState<HomeHeroSlider> {
                                 vertical: 4.h,
                               ),
                               decoration: BoxDecoration(
-                                color: AppColors.textPrimary.withAlpha(60),
+                                color: AppColors.textPrimary.withAlpha(70),
                                 borderRadius: BorderRadius.circular(6),
                               ),
                               child: ConstText(
                                 text: tag,
                                 fontSize: AppConstant.fontSizeOne,
+                                color: AppColors.textSecondary,
+                                fontWeight: AppConstant.medium,
                                 // fontSize: ,
                               ),
                             );
@@ -122,24 +124,11 @@ class _HomeHeroSliderState extends ConsumerState<HomeHeroSlider> {
                           children: [
                             AppBtn(
                               onTap: (){
-                                final user = ref.read(userProvider);
-
-                                if (user.isLoginOrNot()) {
-
-                                  if (item.id == null) return;
-                                  MovieDetailOpenBottomSheet.openContentSheet(
-                                    context,
-                                    contentId: item.id.toString(),
-                                  );
-
-
-
-                                  // context.go(RoutesName.);
-
-                                } else {
-                                  context.go(RoutesName.loginScreen);
-
-                                }
+                                if (item.id == null) return;
+                                MovieDetailOpenBottomSheet.openContentSheet(
+                                  context,
+                                  contentId: item.id.toString(),
+                                );
                               },
                               height: 40.h,
                               width: screenWidth * 0.6,

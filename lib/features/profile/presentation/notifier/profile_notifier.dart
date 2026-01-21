@@ -52,6 +52,7 @@ class ProfileNotifier extends StateNotifier<ProfileState> {
       }
     } catch (e) {
       state = state.copyWith(isLoading: false);
+      rethrow;
     }
   }
 
@@ -78,10 +79,12 @@ class ProfileNotifier extends StateNotifier<ProfileState> {
       }
     } catch (e) {
       state = state.copyWith(isLoading: false);
+      rethrow;
+
     }
   }
 
   String get deviceId => state.profile?.profile?.deviceId ?? "";
-  String get mobileNumber => state.profile?.profile?.deviceId ?? "";
+  String get mobileNumber => state.profile?.profile?.mobile ?? "";
   String get userSubscription => state.profile?.profile?.subscription ?? "";
 }

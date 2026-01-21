@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -33,7 +35,9 @@ class ProfileScreenMinimal extends HookConsumerWidget {
 
     useEffect(() {
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        ref.read(categoryNotifierProvider.notifier).getMyWatchListApi();
+        if(watchlist.isNotEmpty){
+          ref.read(categoryNotifierProvider.notifier).getMyWatchListApi();
+        }
       });
       return null;
     }, []);
@@ -187,9 +191,9 @@ final t=AppLocalizations.of(context)!;
                     onTap: () async{
 
                       if (!allowIfInternet(context: context, ref: ref)) return;
-                       GlobalLoader.show(context);
+                       GlobalLoader.show();
                        await  ref.read(helpSupportNotifierProvider.notifier).helpSupportApi();
-                      GlobalLoader.hide(context);
+                      GlobalLoader.hide();
                       context.pushNamed(RoutesName.helpScreen);
 
 

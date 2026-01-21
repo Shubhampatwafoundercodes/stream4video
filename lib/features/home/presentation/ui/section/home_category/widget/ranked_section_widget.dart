@@ -8,6 +8,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:stream4videos/core/res/app_cached_image.dart';
 import 'package:stream4videos/core/res/app_color.dart';
 import 'package:stream4videos/core/res/app_constant.dart';
+import 'package:stream4videos/core/res/app_size.dart';
 import 'package:stream4videos/core/res/constant/const_text.dart';
 import 'package:stream4videos/core/services/check_user_login_or_not/check_user_proceed.dart';
 import 'package:stream4videos/features/home/data/model/common_model/content_poster_item_model.dart';
@@ -37,7 +38,7 @@ class SectionHeaderWidget extends StatelessWidget {
     final t=AppLocalizations.of(context)!;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+      padding:  EdgeInsets.symmetric(horizontal: 14.w, vertical: 8.h),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -67,7 +68,7 @@ class SectionHeaderWidget extends StatelessWidget {
               ],
             ),
           ),
-          if (showSeeAll) const SizedBox(width: 8),
+          if (showSeeAll) AppSizes.spaceW(08),
 
           if (showSeeAll)
             InkWell(
@@ -81,7 +82,7 @@ class SectionHeaderWidget extends StatelessWidget {
                     fontSize: AppConstant.fontSizeThree,
                     color: AppColors.textSecondary,
                   ),
-                  const SizedBox(width: 4),
+                  AppSizes.spaceW(04),
                   Icon(
                     Icons.arrow_forward_ios,
                     color: AppColors.textPrimary,
@@ -166,11 +167,11 @@ class RankedSectionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 200,
+      height: 180.h,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: items.length,
-        padding: const EdgeInsets.only(left: 10, right: 16),
+        padding:  EdgeInsets.only(left: 10.w, right: 16.w),
         itemBuilder: (_, i) {
           final item = items[i];
           final rank = "${i + 1}";
@@ -181,7 +182,7 @@ class RankedSectionWidget extends StatelessWidget {
               onItemTap(item);
             },
             child: Container(
-              width: 160.w,
+              width: 150.w,
               margin: EdgeInsets.only(left: i == 0 ? 10.w : 0, right: 8.w),
               child: Stack(
                 clipBehavior: Clip.none,
@@ -191,7 +192,7 @@ class RankedSectionWidget extends StatelessWidget {
                     top: 5.h,
                     bottom: 0,
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(04),
+                      borderRadius: BorderRadius.circular(03),
                       child: AppCachedImage(
                         url: item.image ?? "",
                         fit: BoxFit.cover,
@@ -206,7 +207,7 @@ class RankedSectionWidget extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    left: -15.w,
+                    left: -10.w,
                     bottom: -20.h,
                     child: StrokeText(text: rank, fontSize: 80.sp),
                   ),
@@ -218,8 +219,8 @@ class RankedSectionWidget extends StatelessWidget {
                   //   ),
                   Positioned(
                     top: 15.h,
-                    right: 35.w,
-                    child: _buildBadge1(item.quality.toString(), Colors.red.shade700),
+                    right: 25.w,
+                    child: _buildBadge1(item.quality.toString(), Colors.red.shade800),
                   ),
 
 
@@ -234,7 +235,7 @@ class RankedSectionWidget extends StatelessWidget {
 
   Widget _buildBadge1(String text, Color color) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+      padding:  EdgeInsets.symmetric(horizontal: 6.w, vertical: 2.h),
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(4),
@@ -267,7 +268,7 @@ class HorizontalSectionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 200,
+      height: 180.h,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: items.length,
@@ -283,17 +284,17 @@ class HorizontalSectionWidget extends StatelessWidget {
               },
             child: Container(
               margin: EdgeInsets.only(left: i == 0 ? 14 : 10, right: 4),
-              width: 140,
+              width: 120.w,
               child: Stack(
                 clipBehavior: Clip.none,
                 children: [
                   // Poster
                   ClipRRect(
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(03),
                     child: AppCachedImage(
                       url: item.image ?? "",
-                      height: 200,
-                      width: 140,
+                      height: 180.h,
+                      width: 120.w,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -372,7 +373,7 @@ class PosterCard extends HookConsumerWidget {
 
       },
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(03),
         child: AspectRatio(
           aspectRatio: 2 / 3,
           child: Stack(
@@ -443,37 +444,33 @@ Widget _buildBadge(String type) {
   switch (type) {
     case "1":
       return Container(
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(6),
+          borderRadius: BorderRadius.circular(03),
           gradient: const LinearGradient(
             colors: [Color(0xffD4AF37), Color(0xffB8860B)], // Gold gradient
           ),
         ),
-        child: const Text(
+        child: ConstText(text:
           "PREMIUM",
-          style: TextStyle(
-            fontSize: 10,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-          ),
+            fontSize: AppConstant.fontSizeSmall-3,
+            // fontWeight: FontWeight.bold,
+            color: AppColors.blackPrimary
         ),
       );
 
     case "0":
       return Container(
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(6),
-          color: Colors.greenAccent.shade400,
+          borderRadius: BorderRadius.circular(03),
+          color: Colors.teal.shade400,
         ),
-        child: const Text(
+        child:  ConstText(text:
           "FREE",
-          style: TextStyle(
-            fontSize: 10,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-          ),
+            fontSize: AppConstant.fontSizeSmall-3,
+            // fontWeight: FontWeight.bold,
+            color: AppColors.textPrimary
         ),
       );
 
@@ -489,13 +486,10 @@ Widget _buildQualityBadge(String q) {
       color: Colors.black.withOpacity(.6),
       borderRadius: BorderRadius.circular(4),
     ),
-    child: Text(
+    child: ConstText(text:
       q,
-      style: const TextStyle(
-        fontSize: 10,
-        fontWeight: FontWeight.bold,
-        color: Colors.white,
-      ),
+        fontSize: AppConstant.fontSizeSmall-3,
+        color: AppColors.textPrimary
     ),
   );
 }
@@ -530,16 +524,17 @@ class StrokeText extends StatelessWidget {
           text,
           style: TextStyle(
             fontSize: fontSize,
-            fontWeight: FontWeight.w900, // 👈 heavy fill
-            letterSpacing: 2, // 👈 fill spacing
-            color: AppColors.primaryBackground, // 👈 more hollow space look
+            fontWeight: FontWeight.w900,
+            letterSpacing: 2,
+            color: AppColors.primaryBackground,
             shadows: [
               Shadow(
                 blurRadius: 6,
                 color: Colors.white.withOpacity(0.10),
-                offset: const Offset(1, 1), // 👈 depth feel
+                offset: const Offset(1, 1),
               ),
             ],
+            fontFamily: "Poppins"
           ),
         ),
       ],

@@ -117,36 +117,42 @@ class _MyPlanScreenState extends ConsumerState<SubscriptionPlanWidget> {
                       ? null
                       : () {
 
-
-                    if (!allowIfInternet(context: context, ref: ref)) return;
-
-                    showModalBottomSheet(
+                    checkLoginOnly(
                       context: context,
-                      backgroundColor: Colors.transparent,
-                      builder: (_) => CommonConfirmSheet(
-                        title: t.plan_buy_title,
-                        // subtitle: "Continue with ${selectedPlan!.name} for ₹${selectedPlan!.price}?",
-                        subtitle: t.plan_buy_subtitle(
-                          selectedPlan!.name ?? "",
-                          selectedPlan!.price?.toString() ?? "",
-                        ),
-                        confirmText: t.plan_buy_confirm,
-                        cancelText: t.plan_buy_cancel,
-                        imagePath: Assets.iconMyPlan,
-                        onConfirm: () async {
+                      ref: ref,
+                      onAllowed: () {
+
+                        showModalBottomSheet(
+                          context: context,
+                          backgroundColor: Colors.transparent,
+                          builder: (_) => CommonConfirmSheet(
+                            title: t.plan_buy_title,
+                            // subtitle: "Continue with ${selectedPlan!.name} for ₹${selectedPlan!.price}?",
+                            subtitle: t.plan_buy_subtitle(
+                              selectedPlan!.name ?? "",
+                              selectedPlan!.price?.toString() ?? "",
+                            ),
+                            confirmText: t.plan_buy_confirm,
+                            cancelText: t.plan_buy_cancel,
+                            imagePath: Assets.iconMyPlan,
+                            onConfirm: () async {
+                               ref.read(paymentProvider.notifier)
+                                  .startPayment(
+                                amount: double.tryParse(selectedPlan!.price ?? "0")??0.0,
+                                planId: selectedPlan!.id.toString(),
+                              );
+                              // ignore: use_build_context_synchronously
+                            },
+                          ),
+                        );
 
 
-                          GlobalLoader.show(context);
-                          await ref.read(paymentProvider.notifier)
-                              .startPayment(
-                            amount: selectedPlan!.price!.toDouble(),
-                            planId: selectedPlan!.id.toString(),
-                          );
-                          // ignore: use_build_context_synchronously
-                          GlobalLoader.hide(context);
-                        },
-                      ),
+
+
+                      },
                     );
+
+
                   },
                   child:  ConstText(
                     text: t.plan_subscribe_now,

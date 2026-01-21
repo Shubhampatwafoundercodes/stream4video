@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:stream4videos/core/res/constant/const_text.dart';
+import 'package:stream4videos/core/utils/routes/routes.dart';
 
 
 class GlobalLoader {
   static bool _isShowing = false;
 
-  static void show(BuildContext context, {String? message}) {
+  static void show({String? message}) {
     if (_isShowing) return;
     _isShowing = true;
+
+    final context = navigatorKey.currentContext;
+    if (context == null) return;
+
 
     showDialog(
       context: context,
@@ -22,13 +28,17 @@ class GlobalLoader {
     );
   }
 
-  static void hide(BuildContext context) {
-    if (_isShowing) {
+  static void hide() {
+    if (!_isShowing) return;
+
+    final navigator = navigatorKey.currentState;
+    if (navigator == null) return;
+
+    if (navigator.canPop()) {
       _isShowing = false;
-      Navigator.of(context, rootNavigator: true).pop();
+      navigator.pop();
     }
-  }
-}
+  }}
 class _GlobalLoaderDialog extends StatelessWidget {
   final String? message;
 
@@ -71,14 +81,12 @@ class _GlobalLoaderDialog extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 18),
-              Text(
+               SizedBox(height: 18),
+              ConstText(text:
                 message ?? "Please wait...",
                 textAlign: TextAlign.center,
-                style: const TextStyle(
                   color: Colors.white70,
                   fontSize: 13.5,
-                ),
               ),
             ],
           ),

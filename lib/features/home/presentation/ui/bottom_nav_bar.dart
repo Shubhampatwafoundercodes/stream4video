@@ -56,7 +56,6 @@ class _HomeScreenState extends ConsumerState<BottomNavigationBar>
   @override
   void initState() {
     super.initState();
-
     WidgetsBinding.instance.addPostFrameCallback((_) {
       ref.read(categoryNotifierProvider.notifier).getAllCategories();
       ref.read(profileNotifierProvider.notifier).getProfile();
@@ -137,7 +136,7 @@ class _HomeScreenState extends ConsumerState<BottomNavigationBar>
                 danger: true,
 
                 onConfirm: () {
-                  context.pop();
+                  // context.pop();
                   SystemNavigator.pop();
                 },
               );

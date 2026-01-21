@@ -35,6 +35,8 @@ Future<void> _firebaseBackgroundHandler(RemoteMessage massage) async {
      // await Firebase.initializeApp();
      SystemChrome.setEnabledSystemUIMode(
        SystemUiMode.edgeToEdge,
+       overlays: SystemUiOverlay.values,
+
      );
       await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,

@@ -29,7 +29,6 @@ class SettingsScreen extends HookConsumerWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              /// 📥 DOWNLOADS
               // CommonHelpOptionTile(
               //   icon: Icons.download_outlined,
               //   title: "Downloads",
@@ -44,10 +43,11 @@ class SettingsScreen extends HookConsumerWidget {
                 title: t.settings_watchlist,
                 onTap: ()async {
 
-                  GlobalLoader.show(context);
+                  GlobalLoader.show();
                   final notifier = ref.read(categoryNotifierProvider.notifier);
                   await notifier.getMyWatchListApi();
-                  GlobalLoader.hide(context);
+                  GlobalLoader.hide();
+                  // ignore: use_build_context_synchronously
                   context.push(RoutesName.watchListScreen);
                 },
               ),
@@ -89,7 +89,7 @@ class SettingsScreen extends HookConsumerWidget {
                         title: t.settings_logout_confirm_title,
                         confirmText:t.settings_logout_confirm_button,
                         onConfirm: () async {
-                          GlobalLoader.show(context);
+                          GlobalLoader.show();
                           final deviceId= ref.read(profileNotifierProvider.notifier).deviceId;
                             final isLogout = await ref.read(authNotifierProvider.notifier).logoutActiveDevice(deviceId, isLoginScreen: false);
                               if(isLogout==2){
@@ -98,7 +98,7 @@ class SettingsScreen extends HookConsumerWidget {
                              context.go(RoutesName.splash);
                            }
                           // ignore: use_build_context_synchronously
-                          GlobalLoader.hide(context);
+                          GlobalLoader.hide();
 
                         },
                       );

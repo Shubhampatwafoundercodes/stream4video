@@ -61,6 +61,7 @@ import 'package:stream4videos/core/res/app_color.dart';
 import 'package:stream4videos/core/res/app_constant.dart';
 import 'package:stream4videos/core/res/app_size.dart';
 import 'package:stream4videos/core/res/constant/const_text.dart';
+import 'package:stream4videos/core/services/check_user_login_or_not/check_user_proceed.dart';
 import 'package:stream4videos/core/utils/global_loader/global_loader.dart';
 import 'package:stream4videos/core/widget/common_confirm_sheet.dart';
 import 'package:stream4videos/core/widget/shimmer/home_screen_shimmer.dart';
@@ -161,38 +162,45 @@ class CurrentPlanWithAddOnWidget extends HookConsumerWidget {
             AppBtn(
               margin: EdgeInsets.symmetric(horizontal: 15.w),
               onTap: () {
-                final addon = addons[selectedAddonIndex.value];
-
-                showModalBottomSheet(
+                checkLoginOnly(
                   context: context,
-                  backgroundColor: Colors.transparent,
-                  builder: (_) => CommonConfirmSheet(
-                    title: t.rechargeAddon,
-                    subtitle:t.addonPriceSubtitle(addon.name.toString(), addon.price.toString()),
-                    confirmText: t.payNow,
-                    cancelText:t.plan_buy_cancel,
-                    onConfirm: () async {
-                      GlobalLoader.show(context);
+                  ref: ref,
+                  onAllowed: () {
+                    final addon = addons[selectedAddonIndex.value];
+                    showModalBottomSheet(
+                      context: context,
+                      backgroundColor: Colors.transparent,
+                      builder: (_) => CommonConfirmSheet(
+                        title: t.rechargeAddon,
+                        subtitle: t.addonPriceSubtitle(
+                          addon.name.toString(),
+                          addon.price.toString(),
+                        ),
+                        confirmText: t.payNow,
+                        cancelText: t.plan_buy_cancel,
+                        imagePath: Assets.iconMyPlan,
+                        onConfirm: () async {
 
-                      await ref
-                          .read(paymentProvider.notifier)
-                          .startPayment(
-                        amount: double.parse(addon.price!),
-                        planId: planId.toString(),
-                        addOnId: addon.id.toString()
-                      );
 
-                      GlobalLoader.hide(context);
-                    }, imagePath: Assets.iconMyPlan,
-                  ),
+                             ref.read(paymentProvider.notifier)
+                                .startPayment(
+                              amount: double.tryParse(addon.price ?? '') ?? 0.0,
+                              planId: planId.toString(),
+                              addOnId: addon.id.toString(),
+                            );
+                          }
+                      ),
+                    );
+                  },
                 );
               },
-              child:  ConstText(
+              child: ConstText(
                 text: t.rechargeAddon,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
               ),
             ),
+
 
             AppSizes.spaceH(20),
           ],

@@ -96,6 +96,7 @@ class UserNotifier extends StateNotifier<User?> {
   String? get userId => state?.id;
   String? get deviceId => state?.deviceId;
   bool get hasActivePlan => state?.hasActivePlan ??false;
+  bool get isGuest => state?.isGuest ??false;
 }
 
 // Provider

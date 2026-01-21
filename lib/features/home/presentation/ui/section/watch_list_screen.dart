@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:stream4videos/core/res/constant/const_text.dart';
 import 'package:stream4videos/core/widget/common_screen_container.dart';
 import 'package:stream4videos/features/home/presentation/notifier/cat_notifier.dart';
 import 'package:stream4videos/features/home/presentation/ui/section/home_category/widget/ranked_section_widget.dart';
@@ -23,7 +24,6 @@ class WatchlistScreen extends HookConsumerWidget {
       WidgetsBinding.instance.addPostFrameCallback((_){
         if(watchlist.isEmpty){
           notifier.getMyWatchListApi();
-
         }
 
       });
@@ -39,7 +39,7 @@ class WatchlistScreen extends HookConsumerWidget {
           title:t.watchlist_title,
           scrollable: false,
           child:watchlist.isEmpty?
-          Center(child: Text(t.watchlist_empty)):
+          Center(child: ConstText(text:t.watchlist_empty)):
           GridView.builder(
             padding: EdgeInsets.zero,
             // padding: const EdgeInsets.symmetric(horizontal: 14),

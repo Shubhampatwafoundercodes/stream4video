@@ -10,6 +10,7 @@ import 'package:flutter_cashfree_pg_sdk/api/cfsession/cfsession.dart';
 import 'package:flutter_cashfree_pg_sdk/utils/cfenums.dart';
 import 'package:flutter_riverpod/legacy.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:stream4videos/core/utils/global_loader/global_loader.dart';
 import 'package:stream4videos/features/profile/presentation/notifier/profile_notifier.dart';
 import 'package:stream4videos/features/share_pref/user_provider.dart';
 import 'package:stream4videos/features/subscription_plan/data/repo_impl/create_paying_repo_impl.dart';
@@ -51,25 +52,93 @@ class CreatePayingNotifier extends StateNotifier<PaymentState>{
   CFCardWidget? cfCardWidget;
 
 
+  // Future<void> startPayment({
+  //   required double amount,
+  //   required String planId,
+  //    String? addOnId
+  // }) async {
+  //   try {
+  //     GlobalLoader.show();
+  //
+  //     state = state.copyWith(status: PaymentStatus.loading);
+  //     final userNo = ref.read(userProvider.notifier);
+  //     final userId = userNo.userId;
+  //     final mobile = ref.read(profileNotifierProvider.notifier).mobileNumber;
+  //
+  //     if (userId == null  || mobile.isEmpty || userNo.isGuest) {
+  //       GlobalLoader.hide();
+  //
+  //       throw Exception("User info missing");
+  //     }
+  //     final repo = ref.read(createPayingRepoProvider);
+  //
+  //     final body = {
+  //       "user_id": userId,
+  //       "mobile": mobile,
+  //       "amount": amount,
+  //       "plan_id": planId,
+  //     };
+  //     if (addOnId != null && addOnId.isNotEmpty) {
+  //       body["addon_id"] = addOnId;
+  //     }
+  //
+  //     debugPrint("🟡 Create payment body: $body");
+  //
+  //     final res = await repo.createPayingSession(body);
+  //
+  //     debugPrint("🟢 Create payment response: $res");
+  //
+  //     if (res == null || res["status"] != true) {
+  //       GlobalLoader.hide();
+  //       throw Exception(res?["message"] ?? "Payment init failed");
+  //     }
+  //
+  //     final data = res["data"];
+  //     final orderId = data["order_id"].toString();
+  //     final sessionId = data["payment_session_id"].toString();
+  //     _openCashfree(sessionId, orderId);
+  //     state = state.copyWith(
+  //       status: PaymentStatus.idle,
+  //       // orderId: orderId,
+  //       // paymentSessionId: sessionId,
+  //     );
+  //     GlobalLoader.hide();
+  //
+  //
+  //   } catch (e, st) {
+  //     debugPrint("❌ startPayment error: $e\n$st");
+  //     state = state.copyWith(
+  //       status: PaymentStatus.failed,
+  //       message: e.toString(),
+  //     );
+  //     GlobalLoader.hide();
+  //     rethrow;
+  //   }
+  // }
+
   Future<void> startPayment({
     required double amount,
     required String planId,
-     String? addOnId
+    String? addOnId,
   }) async {
+    /// 🔵 Start Loader
+    GlobalLoader.show();
+    state = state.copyWith(status: PaymentStatus.loading);
+
+    final userNo = ref.read(userProvider.notifier);
+    final userId = userNo.userId;
+    final mobile = ref.read(profileNotifierProvider.notifier).mobileNumber;
+
+    if (userId == null || mobile.isEmpty || userNo.isGuest) {
+      GlobalLoader.hide();
+      state = state.copyWith(
+        status: PaymentStatus.failed,
+        message: "Please login to continue payment",
+      );
+      return;
+    }
+
     try {
-      state = state.copyWith(status: PaymentStatus.loading);
-
-      final user = ref.read(userProvider);
-      if (user == null || user.isGuest) {
-        throw Exception("User not logged in");
-      }
-
-      final userId = user.id;
-      final mobile = ref.read(profileNotifierProvider.notifier).mobileNumber;
-
-      if (userId == null  || mobile.isEmpty) {
-        throw Exception("User info missing");
-      }
       final repo = ref.read(createPayingRepoProvider);
 
       final body = {
@@ -78,6 +147,7 @@ class CreatePayingNotifier extends StateNotifier<PaymentState>{
         "amount": amount,
         "plan_id": planId,
       };
+
       if (addOnId != null && addOnId.isNotEmpty) {
         body["addon_id"] = addOnId;
       }
@@ -86,30 +156,37 @@ class CreatePayingNotifier extends StateNotifier<PaymentState>{
 
       final res = await repo.createPayingSession(body);
 
-      debugPrint("🟢 Create payment response: $res");
-
       if (res == null || res["status"] != true) {
-        throw Exception(res?["message"] ?? "Payment init failed");
+        GlobalLoader.hide();
+        state = state.copyWith(
+          status: PaymentStatus.failed,
+          message: res?["message"] ?? "Payment init failed",
+        );
+        return;
       }
 
       final data = res["data"];
       final orderId = data["order_id"].toString();
       final sessionId = data["payment_session_id"].toString();
-    _openCashfree(sessionId, orderId);
-      state = state.copyWith(
-        status: PaymentStatus.idle,
-        // orderId: orderId,
-        // paymentSessionId: sessionId,
-      );
+
+      GlobalLoader.hide();
+
+      _openCashfree(sessionId, orderId);
+
+      state = state.copyWith(status: PaymentStatus.idle);
 
     } catch (e, st) {
+      GlobalLoader.hide();
       debugPrint("❌ startPayment error: $e\n$st");
+
       state = state.copyWith(
         status: PaymentStatus.failed,
-        message: e.toString(),
+        message: "Something went wrong. Please try again.",
       );
+      rethrow;
     }
   }
+
 
   void _openCashfree(String sessionId, String orderId) {
     try {
@@ -133,8 +210,13 @@ class CreatePayingNotifier extends StateNotifier<PaymentState>{
         status: PaymentStatus.failed,
         message: "Payment gateway error",
       );
+      rethrow;
     }
   }
+
+
+
+
   Future<void> _onPaymentSuccess(String orderId) async {
     debugPrint("✅ Payment success: $orderId");
 
@@ -161,6 +243,8 @@ class CreatePayingNotifier extends StateNotifier<PaymentState>{
         status: PaymentStatus.failed,
         message: "Payment verification failed",
       );
+      rethrow;
+
     }
   }
 

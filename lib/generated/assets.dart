@@ -22,9 +22,8 @@ class Assets {
   static const String imageHindiLang = 'assets/image/hindi_lang.png';
   static const String imageLogoutIc = 'assets/image/logout_ic.png';
   static const String imageNoCustomerImage = 'assets/image/no_customer_image.png';
+  static const String imagePlaystore = 'assets/image/playstore.png';
   static const String imagePunjabiLang = 'assets/image/punjabi_lang.png';
   static const String imageRamSetu = 'assets/image/ram_setu.jpg';
-  static const String videos123456 = 'assets/videos/123456.mp4';
-  static const String videosIntro1 = 'assets/videos/intro_1.mp4';
 
 }

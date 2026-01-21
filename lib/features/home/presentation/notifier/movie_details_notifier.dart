@@ -104,6 +104,7 @@ class MovieDetailsNotifier extends StateNotifier<MovieDetailsState> {
         isLoading: false,
         error: e.toString(),
       );
+      rethrow;
     }
   }
 

@@ -7,20 +7,23 @@ class AnimatedGoldenBadge extends StatefulWidget {
   final List<String> texts;
   final double width;
   final double height;
+  final VoidCallback? onTap;
+
 
   const AnimatedGoldenBadge({
     super.key,
     required this.texts,
     this.width = 80,
     this.height = 32,
+    this.onTap,
+
   });
 
   @override
   State<AnimatedGoldenBadge> createState() => _AnimatedGoldenBadgeState();
 }
 
-class _AnimatedGoldenBadgeState extends State<AnimatedGoldenBadge>
-    with TickerProviderStateMixin {
+class _AnimatedGoldenBadgeState extends State<AnimatedGoldenBadge> with TickerProviderStateMixin {
 
   late AnimationController borderController;
   late AnimationController textController;
@@ -70,47 +73,50 @@ class _AnimatedGoldenBadgeState extends State<AnimatedGoldenBadge>
     return AnimatedBuilder(
       animation: borderController,
       builder: (_, __) {
-        return CustomPaint(
-          painter: _GoldenBorderPainter(borderController.value),
-          child: Container(
-            width: widget.width,
-            height: widget.height,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: Colors.black,
-              borderRadius: BorderRadius.circular(4),
-            ),
-            child: FadeTransition(
-              opacity: textController,
-              child: SlideTransition(
-                position: Tween<Offset>(
-                  begin: const Offset(0, 0.4),
-                  end: Offset.zero,
-                ).animate(textController),
-                child: ShaderMask(
-                  shaderCallback: (bounds) {
-                    return const LinearGradient(
-                      colors: [
-                        Color(0xFFE7C37F),
-                        Color(0xFFD4A857),
-                        Color(0xFFA8752E),
-                        Color(0xFF6B4C1E),
-                      ],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                    ).createShader(bounds);
-                  },
-                  blendMode: BlendMode.srcIn,
-                  child: ConstText(text:
-                    widget.texts[currentIndex],
-                    fontSize: AppConstant.fontSizeOne,
-                    fontWeight: AppConstant.extraBold,
+        return InkWell(
+          onTap: widget.onTap,
+          child: CustomPaint(
+            painter: _GoldenBorderPainter(borderController.value),
+            child: Container(
+              width: widget.width,
+              height: widget.height,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: Colors.black,
+                borderRadius: BorderRadius.circular(4),
+              ),
+              child: FadeTransition(
+                opacity: textController,
+                child: SlideTransition(
+                  position: Tween<Offset>(
+                    begin: const Offset(0, 0.4),
+                    end: Offset.zero,
+                  ).animate(textController),
+                  child: ShaderMask(
+                    shaderCallback: (bounds) {
+                      return const LinearGradient(
+                        colors: [
+                          Color(0xFFE7C37F),
+                          Color(0xFFD4A857),
+                          Color(0xFFA8752E),
+                          Color(0xFF6B4C1E),
+                        ],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                      ).createShader(bounds);
+                    },
+                    blendMode: BlendMode.srcIn,
+                    child: ConstText(text:
+                      widget.texts[currentIndex],
+                      fontSize: AppConstant.fontSizeOne,
+                      fontWeight: AppConstant.extraBold,
 
+                    ),
                   ),
                 ),
               ),
-            ),
 
+            ),
           ),
         );
       },

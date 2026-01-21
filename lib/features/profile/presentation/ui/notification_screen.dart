@@ -10,6 +10,7 @@ import 'package:stream4videos/core/utils/format/date_time_formater.dart';
   import 'package:stream4videos/core/widget/common_screen_container.dart';
 import 'package:stream4videos/core/widget/shimmer/home_screen_shimmer.dart';
 import 'package:stream4videos/features/profile/presentation/notifier/notification_notifier.dart';
+import 'package:stream4videos/l10n/app_localizations.dart';
 
   class NotificationScreen extends HookConsumerWidget {
     const NotificationScreen({super.key});
@@ -17,6 +18,7 @@ import 'package:stream4videos/features/profile/presentation/notifier/notificatio
     @override
     Widget build(BuildContext context, WidgetRef ref) {
       final notificationState = ref.watch(notificationProvider);
+      final t=AppLocalizations.of(context)!;
       useEffect(() {
         WidgetsBinding.instance.addPostFrameCallback((_) {
           ref.read(notificationProvider.notifier)
@@ -29,16 +31,16 @@ import 'package:stream4videos/features/profile/presentation/notifier/notificatio
         top: false,
         child: Scaffold(
           body: CommonScreenContainer(
-            title: "Notifications",
+            title: t.settings_notifications,
             child: notificationState.when(
               error: (e, _) => Center(
-                child: Text("Error: $e"),
+                child: ConstText(text: t.payment_failed_subtitle),
               ),
               loading: () => MovieSectionShimmer(),
               data: (list){
                 if (list.isEmpty) {
                   return const Center(
-                    child: ConstText(text: "No notifications"),
+                    child: ConstText(text: "No Notifications found"),
                   );
                 }
 

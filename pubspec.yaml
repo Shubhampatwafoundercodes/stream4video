@@ -42,7 +42,7 @@ dependencies:
 
   #permission
   permission_handler: ^12.0.1
-  smooth_page_indicator:
+#  smooth_page_indicator:
   flutter_localizations:
     sdk: flutter
   #  video_player: ^2.10.1
@@ -89,7 +89,6 @@ flutter:
     - assets/font/
     - assets/icon/
     - assets/image/
-    - assets/videos/
 
 
 

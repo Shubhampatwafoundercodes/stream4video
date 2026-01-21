@@ -163,14 +163,13 @@ class ActiveDeviceScreen extends HookConsumerWidget {
                             danger: true,
                             onConfirm: () async {
                               GlobalLoader.show(
-                                context,
                                 message: t.active_device_logout_loading,
                               );
 
                               final loginResult = await ref
                                   .read(authNotifierProvider.notifier)
                                   .logoutActiveDevice(device.deviceId);
-                              GlobalLoader.hide(context);
+                              GlobalLoader.hide();
                               if (!context.mounted) return;
                               if (loginResult == 1) {
                                 context.go(RoutesName.homeScreen);

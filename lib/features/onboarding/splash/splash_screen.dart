@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'dart:async';
 import 'dart:math';
 import 'dart:ui';
@@ -114,7 +116,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> with TickerProvider
                         style: TextStyle(
                           fontFamily: "Poppins",
                           letterSpacing: 4,
-                          color: neonColors[0].withOpacity(0.8),
+                          color: neonColors[0].withAlpha(80),
                           fontSize: 14,
                         ),
                       ),
@@ -125,7 +127,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> with TickerProvider
                           value: _controller.value,
                           color: neonColors[0],
                           backgroundColor:
-                          neonColors[0].withOpacity(0.1),
+                          neonColors[0].withAlpha(10),
                         ),
                       )
                     ],
@@ -181,6 +183,8 @@ class NeonTitle extends StatelessWidget {
         return Transform(
           alignment: Alignment.center,
           transform: Matrix4.identity()
+            // ignore: duplicate_ignore
+            // ignore: deprecated_member_use
             ..translate(0.0, slideY)
             ..scale(scale)
             ..rotateX(rot),

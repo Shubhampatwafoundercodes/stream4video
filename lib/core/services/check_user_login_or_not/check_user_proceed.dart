@@ -35,7 +35,7 @@ void checkLoginOnly({
 }
 
 
-Future<void> checkLoginAndPremium({
+void checkLoginAndPremium({
   required BuildContext context,
   required WidgetRef ref,
   required bool isPremiumContent,
@@ -71,7 +71,7 @@ Future<void> checkLoginAndPremium({
   }
 
   // 3️⃣ Allowed
-  await onAllowed();
+   onAllowed();
 }
 
 

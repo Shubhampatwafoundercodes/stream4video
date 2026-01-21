@@ -176,13 +176,13 @@ class EditProfileScreen extends HookConsumerWidget {
                     context.pop();
                     return;
                   }
-                  GlobalLoader.show(context,message: t.profile_updating);
+                  GlobalLoader.show(message: t.profile_updating);
                   await ref.read(profileNotifierProvider.notifier).updateProfile(
                     name: updatedName,
                     email: updatedEmail,
                   );
                   // ignore: use_build_context_synchronously
-                  GlobalLoader.hide(context);
+                  GlobalLoader.hide();
                 },
               ),
               AppSizes.spaceH(40),

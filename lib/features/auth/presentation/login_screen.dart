@@ -247,13 +247,13 @@ class LoginScreen extends HookConsumerWidget {
                         if (!isValid) return;
 
                         final phone = phoneController.text.trim();
-                        GlobalLoader.show(context, message: t.login_sendingOtp);
+                        GlobalLoader.show( message: t.login_sendingOtp);
 
                         final success = await ref.read(authNotifierProvider.notifier).sendOtp(phone);
 
                         if (!context.mounted) return;
 
-                        GlobalLoader.hide(context);
+                        GlobalLoader.hide();
 
                         if (success) {
                           context.push(RoutesName.otpScreen, extra: phone);

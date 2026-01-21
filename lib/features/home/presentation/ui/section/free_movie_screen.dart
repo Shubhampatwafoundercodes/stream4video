@@ -21,6 +21,7 @@ class FreeMovieScreen extends HookConsumerWidget {
 
     useEffect(() {
       WidgetsBinding.instance.addPostFrameCallback((_){
+
         catNotifier.getSectionApi(isPremium: false);
       });
       return null;

@@ -41,6 +41,8 @@ class AppCachedImage extends StatelessWidget {
 
       placeholder: (_, __) =>
       placeholder ??
+
+
           Container(
             width: width,
             height: height,
@@ -57,7 +59,7 @@ class AppCachedImage extends StatelessWidget {
             height: height,
             color: Colors.black26,
             child: Image.asset(
-              Assets.imageBrokenImage,
+              Assets.imagePlaystore,
               fit: BoxFit.cover,
             ),
           ),

@@ -4,17 +4,23 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:stream4videos/core/res/app_color.dart';
+import 'package:stream4videos/core/res/app_constant.dart';
 import 'package:stream4videos/core/res/app_size.dart';
+import 'package:stream4videos/core/res/constant/const_text.dart';
+import 'package:stream4videos/core/services/check_user_login_or_not/check_user_proceed.dart';
 import 'package:stream4videos/core/utils/routes/routes_name.dart';
 import 'package:stream4videos/core/widget/shimmer/home_screen_shimmer.dart';
 import 'package:stream4videos/features/home/presentation/notifier/cat_notifier.dart';
+import 'package:stream4videos/features/home/presentation/ui/bottom_nav_bar.dart';
 import 'package:stream4videos/features/home/presentation/ui/section/home_category/all_category.dart';
 import 'package:stream4videos/features/home/presentation/notifier/home_section_provider.dart';
+import 'package:stream4videos/features/home/presentation/ui/section/home_category/widget/ranked_section_widget.dart';
 import 'package:stream4videos/features/home/presentation/ui/section/widget/animated_golden_batch.dart';
 import 'package:stream4videos/features/home/presentation/ui/section/widget/home_hero_slider.dart';
 import 'package:stream4videos/features/home/presentation/ui/section/widget/home_screen_tapbar.dart';
 import 'package:stream4videos/features/profile/presentation/notifier/profile_notifier.dart';
 import 'package:stream4videos/generated/assets.dart';
+import 'package:stream4videos/l10n/app_localizations.dart';
 
 
 class HomeScreenSection extends HookConsumerWidget {
@@ -22,11 +28,13 @@ class HomeScreenSection extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+
+    final t= AppLocalizations.of(context)!;
     final state = ref.watch(homeProvider);
     final notifier = ref.read(homeProvider.notifier);
     final categoryState = ref.watch(categoryNotifierProvider);
     final sections = categoryState.subCategories?.data ?? [];
-
+    final watchlist = categoryState.myWatchListModelData ?? [];
     final banners = categoryState.homeBannerModel?.data ?? [];
 
     final scrollController = useScrollController();
@@ -72,8 +80,8 @@ class HomeScreenSection extends HookConsumerWidget {
         title: AnimatedSwitcher(
           duration: const Duration(milliseconds: 300),
           child: state.isSticky
-              ? _buildStickyTabBar(ref,)
-              : _buildProfileHeader(context),
+              ? _buildStickyTabBar(ref,context)
+              : _buildProfileHeader(context,ref),
         ),
       ),
 
@@ -87,8 +95,11 @@ class HomeScreenSection extends HookConsumerWidget {
                 scrollController.jumpTo(0);
               }
               notifier.updateSticky(false);
-              ref.read(categoryNotifierProvider.notifier).getAllCategories();
+              final catN= ref.read(categoryNotifierProvider.notifier);
+                     catN.getAllCategories();
               ref.read(profileNotifierProvider.notifier).getProfile();
+                   catN.getMyWatchListApi();
+
 
 
             },
@@ -97,9 +108,61 @@ class HomeScreenSection extends HookConsumerWidget {
                     child: Column(
             children: [
                HomeHeroSlider(banners: banners,),
+              if (!state.isSticky) _buildStickyTabBar(ref,context),
+              if (categoryState.isAddWatchListLoading)
+                const Center(child: MovieSectionShimmer(),)
+              else if (watchlist.isNotEmpty) ...[
+                Padding(
+                  padding:  EdgeInsets.symmetric(horizontal: 15.0.w,vertical: 15.h),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ConstText(
+                        text: t.profile_watchlist_title,
+                        fontSize: AppConstant.fontSizeThree+2,
+                        fontWeight: AppConstant.bold,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          if (!allowIfInternet(context: context, ref: ref)) return;
+                          context.pushNamed(RoutesName.watchListScreen);
+                        },
+                        child: ConstText(
+                          text: t.profile_watchlist_view_all,
+                          color: AppColors.textSecondary,
+                          fontWeight: AppConstant.medium,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                AppSizes.spaceH(12),
+                SizedBox(
+                  height: 180.h,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount:
+                    watchlist.length > 6 ? 6 : watchlist.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: EdgeInsets.only(
+                          left: index == 0 ? 15.w : 0,
+                          right: index == watchlist.length - 1 ? 0 : 12,
+                        ),
+                        child: SizedBox(
+                          width: 120.h,
+                          child: PosterCard(item: watchlist[index]),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                AppSizes.spaceH(06),
 
-              if (!state.isSticky) _buildStickyTabBar(ref),
-              AppSizes.spaceH(20),
+
+              ],
+              AppSizes.spaceH(10),
+
               if(sections.isNotEmpty)
               Column(
                 children: List.generate(
@@ -115,7 +178,7 @@ class HomeScreenSection extends HookConsumerWidget {
     );
   }
 
-  Widget _buildProfileHeader(BuildContext context) {
+  Widget _buildProfileHeader(BuildContext context ,WidgetRef ref) {
     return Padding(
       key: const ValueKey("PROFILE_HEADER"),
       padding:  EdgeInsets.symmetric(horizontal: 15.w, vertical: 6.h),
@@ -140,13 +203,18 @@ class HomeScreenSection extends HookConsumerWidget {
             texts: ["Prime", "Premium", "Exclusive"],
             width: 90.w,
             height: 30.h,
+            onTap: () async {
+              if (!allowIfInternet(context: context, ref: ref)) return;
+              await context.push(RoutesName.myPlanScreen);
+              ref.read(bottomNavProvider.notifier).state = 0;
+            },
           ),
         ],
       ),
     );
   }
 
-  Widget _buildStickyTabBar(WidgetRef ref,) {
+  Widget _buildStickyTabBar(WidgetRef ref, BuildContext context) {
     final state = ref.watch(homeProvider);
     final categoryNotifier = ref.watch(categoryNotifierProvider);
     final categoryList = categoryNotifier.categories?.data ?? [];
@@ -158,6 +226,7 @@ class HomeScreenSection extends HookConsumerWidget {
         categories: categoryList.map((e) => e.name ?? "").toList(),
         selectedIndex: state.selectedCategory,
         onSelect: (i) {
+          if (!allowIfInternet(context: context, ref: ref)) return;
           final catId= categoryList[i].id.toString();
           ref.read(homeProvider.notifier).updateCategory(i);
           ref.read(categoryNotifierProvider.notifier).getSubCategories(catId);

@@ -63,6 +63,8 @@ class SubscriptionNotifier extends StateNotifier<SubscriptionState> {
     } catch (e) {
       state = state.copyWith(isLoading: false);
       debugPrint("❌ getSubscriptionPlans error: $e");
+      rethrow;
+
     }
   }
 
@@ -77,6 +79,8 @@ class SubscriptionNotifier extends StateNotifier<SubscriptionState> {
     } catch (e) {
       state = state.copyWith(isLoading: false);
       debugPrint("❌ getSubscriptionPlans error: $e");
+      rethrow;
+
     }
   }
 
@@ -95,6 +99,8 @@ class SubscriptionNotifier extends StateNotifier<SubscriptionState> {
     } catch (e) {
       state = state.copyWith(isLoading: false);
       debugPrint("❌ User plan history error: $e");
+      rethrow;
+
     }
   }
 

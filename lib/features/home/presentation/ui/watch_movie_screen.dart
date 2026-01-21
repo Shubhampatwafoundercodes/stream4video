@@ -118,17 +118,16 @@ class WatchMovieScreen extends HookConsumerWidget {
                             Expanded(
                               child: AppBtn(
                                 onTap: () async{
-                                  GlobalLoader.show(context);
-                                  try{
+                                  // GlobalLoader.show();
 
-                                   await checkLoginAndPremium(
+                                    checkLoginAndPremium(
                                       context: context,
                                       ref: ref,
                                       isPremiumContent: movie.isPremium == 1,
                                       onAllowed: () async{
                                         final url = notifier.getPlayUrlOnPlayTap();
                                         if (url == null) return;
-                                       await context.pushNamed(
+                                        context.pushNamed(
                                           RoutesName.fullScreenVideoPlay,
                                           extra: {
                                             'videoUrl': url,
@@ -137,18 +136,7 @@ class WatchMovieScreen extends HookConsumerWidget {
                                       },
                                     );
 
-
-                                  }finally{
-
-
-                                      GlobalLoader.hide(context);
-
-
-                                  }
-
-
-
-
+                                   // GlobalLoader.hide();
 
                                   },
                                 child: Row(
@@ -177,9 +165,9 @@ class WatchMovieScreen extends HookConsumerWidget {
                                   context: context,
                                   ref: ref,
                                   onAllowed: () async{
-                                    GlobalLoader.show(context);
+                                    GlobalLoader.show();
                                     await categoryNotifier.addWatchListApi(contentId);
-                                    GlobalLoader.hide(context);
+                                    GlobalLoader.hide();
                                     },
                                 );
 
@@ -305,10 +293,9 @@ class WatchMovieScreen extends HookConsumerWidget {
                                 i == state.currentEpisodeIndex;
                         return GestureDetector(
                           onTap: () async{
-                            GlobalLoader.show(context);
-                            try{
+                            // GlobalLoader.show();
 
-                              await checkLoginAndPremium(
+                               checkLoginAndPremium(
                               context: context,
                               ref: ref,
                               isPremiumContent: movie.isPremium == 1,
@@ -326,13 +313,7 @@ class WatchMovieScreen extends HookConsumerWidget {
                               );
 
 
-                            }finally{
 
-
-                              GlobalLoader.hide(context);
-
-
-                            }
 
 
 

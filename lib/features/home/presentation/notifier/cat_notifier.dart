@@ -124,6 +124,8 @@ class CategoryNotifier extends StateNotifier<CategoryState> {
       }
     } catch (e) {
       state = state.copyWith(isLoading: false);
+      rethrow;
+
     }
   }
 
@@ -161,6 +163,8 @@ class CategoryNotifier extends StateNotifier<CategoryState> {
 
     } catch (e) {
       state = state.copyWith(isSubCatLoading: false);
+      rethrow;
+
     }
   }
 
@@ -197,6 +201,8 @@ class CategoryNotifier extends StateNotifier<CategoryState> {
       }
     } catch (e) {
       // state = state.copyWith(isLoading: false);
+      rethrow;
+
     }
   }
 
@@ -261,6 +267,8 @@ class CategoryNotifier extends StateNotifier<CategoryState> {
     } catch (e) {
       // ❌ API error → rollback
       state = state.copyWith(isInWatchlist: previousValue);
+      rethrow;
+
     } finally {
       state = state.copyWith(isAddWatchListLoading: false);
     }
@@ -273,6 +281,7 @@ class CategoryNotifier extends StateNotifier<CategoryState> {
 
 
   Future<void> getMyWatchListApi()async {
+
     state = state.copyWith(isAddWatchListLoading: true);
     final userId=_ref.read(userProvider.notifier).userId;
     try {
@@ -295,6 +304,7 @@ class CategoryNotifier extends StateNotifier<CategoryState> {
     }
     }catch (e) {
       state = state.copyWith(isAddWatchListLoading: false,myWatchListModelData: null);
+      rethrow;
     }
 
   }
@@ -314,6 +324,8 @@ class CategoryNotifier extends StateNotifier<CategoryState> {
       }
     } catch (e) {
       state = state.copyWith(isFreeSectionLoading: false);
+      rethrow;
+
     }
   }
 

@@ -147,6 +147,8 @@ class AuthNotifier extends StateNotifier<AuthState> {
 
     } catch (e) {
       state = state.copyWith(isLoading: false,);
+      rethrow;
+
       // toastMsg("OTP Verification Error: $e");
       return false;
     }
@@ -270,6 +272,7 @@ class AuthNotifier extends StateNotifier<AuthState> {
     } catch (e) {
       state = state.copyWith(isLoading: false);
       debugPrint("allBannerApi error: $e");
+      rethrow;
     }
   }
 

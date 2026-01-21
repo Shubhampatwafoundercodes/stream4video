@@ -54,6 +54,7 @@ class HelpSupportNotifier extends StateNotifier<HelpSupportState> {
         isLoading: false,
         error: e.toString(),
       );
+      rethrow;
     }
   }
 }

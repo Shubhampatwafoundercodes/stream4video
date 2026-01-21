@@ -102,12 +102,12 @@ final authN=ref.read(authNotifierProvider.notifier);
 
                     if (remainingTime.value != 0) return;
 
-                    GlobalLoader.show(context, message: t.otp_resending);
+                    GlobalLoader.show( message: t.otp_resending);
 
                     final success = await authN.sendOtp(mobile);
 
                     // ignore: use_build_context_synchronously
-                    GlobalLoader.hide(context);
+                    GlobalLoader.hide();
 
                     if (!context.mounted) return;
 
@@ -139,7 +139,6 @@ final authN=ref.read(authNotifierProvider.notifier);
                     return;
                   }
                   GlobalLoader.show(
-                    context,
                     message: t.otp_verifying,
                   );
 
@@ -147,7 +146,7 @@ final authN=ref.read(authNotifierProvider.notifier);
 
                   if (!otpSuccess) {
                     // ignore: use_build_context_synchronously
-                    GlobalLoader.hide(context);
+                    GlobalLoader.hide();
                     otpController.clear();
                     // ignore: use_build_context_synchronously
                     ScaffoldMessenger.of(context).showSnackBar(
@@ -158,7 +157,7 @@ final authN=ref.read(authNotifierProvider.notifier);
                   final loginResult = await authN.login(mobile);
 
                   // ignore: use_build_context_synchronously
-                  GlobalLoader.hide(context);
+                  GlobalLoader.hide();
 
                   if (!context.mounted) return;
                   if (loginResult == 1) {

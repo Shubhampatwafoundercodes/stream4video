@@ -24,24 +24,22 @@ class LanguageScreen extends HookConsumerWidget {
     const List<Map<String, String>> appLanguages = [
       {
         'code': 'hi',
+        'title': 'Hindi',
         'key': 'hindi',
         'image': Assets.imageHindiLang,
       },
       {
         'code': 'en',
+        'title': 'English',
         'key': 'english',
         'image': Assets.imageEnglishLang,
       },
       {
         'code': 'pa',
+        'title': 'Punjabi',
         'key': 'punjabi',
         'image': Assets.imagePunjabiLang,
       },
-      // {
-      //   'code': 'bho',
-      //   'key': 'bhojpuri',
-      //   'image': Assets.imageBhojpuriLang,
-      // },
     ];
 
 
@@ -62,9 +60,10 @@ class LanguageScreen extends HookConsumerWidget {
                 final code = lang['code']!;
                 final key = lang['key']!;
                 final image = lang['image']!;
+                final title = lang['title']!;
 
                 return _languageTile(
-                  title: langText(t, key),
+                  title: title,
                   subtitle: langText(t, key),
                   image: image,
                   selected: selectedCode == code,

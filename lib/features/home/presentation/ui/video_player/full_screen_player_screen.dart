@@ -55,10 +55,9 @@ class FullscreenVideoScreen extends HookConsumerWidget {
       if (isExiting.value) return;
       isExiting.value = true;
 
-
-      SystemChrome.setPreferredOrientations([
-        DeviceOrientation.portraitUp,
-      ]);
+      // SystemChrome.setPreferredOrientations([
+      //   DeviceOrientation.portraitUp,
+      // ]);
        await  FullScreenHelper.exit();
 
       overlayTimer.value?.cancel();
@@ -178,10 +177,11 @@ class FullscreenVideoScreen extends HookConsumerWidget {
                         children:  [
                           Icon(Icons.keyboard_arrow_up, color: Colors.white,size: 18,),
                           AppSizes.spaceW(06),
-                          Text(
+                          ConstText(text:
                           "More like this",
 
-                            // fontSize: AppConstant.fontSizeZero,
+                            fontSize: AppConstant.fontSizeZero,
+                            color: AppColors.blackPrimary,
                           ),
                         ],
                       ),
