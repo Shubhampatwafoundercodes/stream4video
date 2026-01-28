@@ -38,13 +38,24 @@ class ProfileNotifier extends StateNotifier<ProfileState> {
 
       final userid = userState.userId;
       final deviceId = userState.deviceId;
+      final isGuest = userState.isGuest;
+      final token = userState.token;
+      if (isGuest == true || userid == null || userid.isEmpty) {
+        state = state.copyWith(isLoading: false, profile: null);
+        return;
+      }
+
       final profile = await repo.getProfileApi(
         userid.toString(),
         deviceId.toString(),
+        token.toString(),
       );
+
       if (profile.success == true) {
         state = state.copyWith(isLoading: false, profile: profile);
-        final hasPlan = profile.profile?.subscription.toString().toLowerCase() == "yes" && profile.profile?.subscriptionData !=null;
+        final hasPlan =
+            profile.profile?.subscription.toString().toLowerCase() == "yes" &&
+            profile.profile?.subscriptionData != null;
 
         await userState.updatePlanStatus(hasPlan);
       } else {
@@ -52,7 +63,7 @@ class ProfileNotifier extends StateNotifier<ProfileState> {
       }
     } catch (e) {
       state = state.copyWith(isLoading: false);
-      rethrow;
+      // rethrow;
     }
   }
 
@@ -80,7 +91,6 @@ class ProfileNotifier extends StateNotifier<ProfileState> {
     } catch (e) {
       state = state.copyWith(isLoading: false);
       rethrow;
-
     }
   }
 

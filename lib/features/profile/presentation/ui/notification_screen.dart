@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
   import 'package:stream4videos/core/res/app_size.dart';
   import 'package:stream4videos/core/res/constant/const_text.dart';
 import 'package:stream4videos/core/utils/format/date_time_formater.dart';
+import 'package:stream4videos/core/widget/common_no_data_found.dart';
   import 'package:stream4videos/core/widget/common_screen_container.dart';
 import 'package:stream4videos/core/widget/shimmer/home_screen_shimmer.dart';
 import 'package:stream4videos/features/profile/presentation/notifier/notification_notifier.dart';
@@ -39,8 +40,8 @@ import 'package:stream4videos/l10n/app_localizations.dart';
               loading: () => MovieSectionShimmer(),
               data: (list){
                 if (list.isEmpty) {
-                  return const Center(
-                    child: ConstText(text: "No Notifications found"),
+                  return  Center(
+                    child: CommonNoDataFound(title: t.noNotificationsFound,),
                   );
                 }
 

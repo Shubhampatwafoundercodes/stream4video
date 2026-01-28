@@ -214,5 +214,25 @@
       "addon": {},
       "price": {}
     }
-  }
+  },
+  "noNotificationsFound": "ਕੋਈ ਨੋਟੀਫਿਕੇਸ਼ਨ ਨਹੀਂ ਮਿਲਿਆ",
+
+
+  "premiumContent": "ਪ੍ਰੀਮੀਅਮ ਸਮੱਗਰੀ",
+  "subscribeToWatch": "ਇਹ ਵੀਡੀਓ ਦੇਖਣ ਲਈ ਸਬਸਕ੍ਰਾਈਬ ਕਰੋ",
+  "subscribeNow": "ਸਬਸਕ੍ਰਾਈਬ ਕਰੋ",
+  "later": "ਬਾਅਦ ਵਿੱਚ",
+
+  "loginRequired": "ਲਾਗਇਨ ਲਾਜ਼ਮੀ ਹੈ",
+  "loginFirstToContinue": "ਜਾਰੀ ਰੱਖਣ ਲਈ ਪਹਿਲਾਂ ਲਾਗਇਨ ਕਰੋ",
+  "login": "ਲਾਗਇਨ",
+  "cancel": "ਰੱਦ ਕਰੋ",
+
+  "noInternet": "ਇੰਟਰਨੈੱਟ ਨਹੀਂ ਹੈ",
+  "turnOnInternet": "ਕਿਰਪਾ ਕਰਕੇ ਆਪਣਾ ਇੰਟਰਨੈੱਟ ਚਾਲੂ ਕਰੋ",
+  "retry": "ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ",
+
+  "sessionExpiredTitle": "ਮੁੜ ਲਾਗਇਨ ਕਰੋ",
+  "sessionExpiredSubtitle": "ਤੁਹਾਡੀ ਸੁਰੱਖਿਆ ਲਈ ਤੁਹਾਨੂੰ ਲਾਗ ਆਉਟ ਕਰ ਦਿੱਤਾ ਗਿਆ ਹੈ। ਜਾਰੀ ਰੱਖਣ ਲਈ ਮੁੜ ਲਾਗਇਨ ਕਰੋ।"
+
 }

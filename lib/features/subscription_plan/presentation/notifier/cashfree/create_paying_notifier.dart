@@ -120,13 +120,14 @@ class CreatePayingNotifier extends StateNotifier<PaymentState>{
     required double amount,
     required String planId,
     String? addOnId,
-  }) async {
+  }) async
+  {
     /// 🔵 Start Loader
     GlobalLoader.show();
     state = state.copyWith(status: PaymentStatus.loading);
-
     final userNo = ref.read(userProvider.notifier);
     final userId = userNo.userId;
+    final token = userNo.token;
     final mobile = ref.read(profileNotifierProvider.notifier).mobileNumber;
 
     if (userId == null || mobile.isEmpty || userNo.isGuest) {
@@ -146,6 +147,7 @@ class CreatePayingNotifier extends StateNotifier<PaymentState>{
         "mobile": mobile,
         "amount": amount,
         "plan_id": planId,
+        "token":token,
       };
 
       if (addOnId != null && addOnId.isNotEmpty) {
@@ -183,7 +185,6 @@ class CreatePayingNotifier extends StateNotifier<PaymentState>{
         status: PaymentStatus.failed,
         message: "Something went wrong. Please try again.",
       );
-      rethrow;
     }
   }
 
@@ -210,7 +211,6 @@ class CreatePayingNotifier extends StateNotifier<PaymentState>{
         status: PaymentStatus.failed,
         message: "Payment gateway error",
       );
-      rethrow;
     }
   }
 

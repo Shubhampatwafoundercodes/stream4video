@@ -950,6 +950,90 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{addon} for ₹{price}'**
   String addonPriceSubtitle(Object addon, Object price);
+
+  /// No description provided for @noNotificationsFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No notifications found'**
+  String get noNotificationsFound;
+
+  /// No description provided for @premiumContent.
+  ///
+  /// In en, this message translates to:
+  /// **'Premium content'**
+  String get premiumContent;
+
+  /// No description provided for @subscribeToWatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Please subscribe to watch this video'**
+  String get subscribeToWatch;
+
+  /// No description provided for @subscribeNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscribe Now'**
+  String get subscribeNow;
+
+  /// No description provided for @later.
+  ///
+  /// In en, this message translates to:
+  /// **'Later'**
+  String get later;
+
+  /// No description provided for @loginRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Login required'**
+  String get loginRequired;
+
+  /// No description provided for @loginFirstToContinue.
+  ///
+  /// In en, this message translates to:
+  /// **'Please login first to continue'**
+  String get loginFirstToContinue;
+
+  /// No description provided for @login.
+  ///
+  /// In en, this message translates to:
+  /// **'Login'**
+  String get login;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @noInternet.
+  ///
+  /// In en, this message translates to:
+  /// **'No Internet'**
+  String get noInternet;
+
+  /// No description provided for @turnOnInternet.
+  ///
+  /// In en, this message translates to:
+  /// **'Please turn on your internet connection'**
+  String get turnOnInternet;
+
+  /// No description provided for @retry.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get retry;
+
+  /// No description provided for @sessionExpiredTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Please Log In Again'**
+  String get sessionExpiredTitle;
+
+  /// No description provided for @sessionExpiredSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'For your security, you’ve been logged out. Log in again to continue.'**
+  String get sessionExpiredSubtitle;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

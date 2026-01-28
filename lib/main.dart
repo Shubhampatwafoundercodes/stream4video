@@ -10,6 +10,8 @@ import 'package:stream4videos/core/res/app_color.dart';
 import 'package:stream4videos/core/res/app_device.dart';
 import 'package:stream4videos/core/services/networkChecker/internet_banner.dart';
 import 'package:stream4videos/core/utils/theme/app_theme.dart';
+import 'package:stream4videos/core/widget/bottom_sheet/show_sheet.dart';
+import 'package:stream4videos/features/share_pref/user_provider.dart';
 
 import 'core/services/deeplink/deep_link_handler.dart';
 import 'core/utils/routes/routes.dart';
@@ -25,6 +27,7 @@ Future<void> _firebaseBackgroundHandler(RemoteMessage massage) async {
   // Hit massage delivered API here
 }
 
+final providerScopeKey = GlobalKey();
 
    void main ()async {
      WidgetsFlutterBinding.ensureInitialized();
@@ -49,10 +52,8 @@ Future<void> _firebaseBackgroundHandler(RemoteMessage massage) async {
      );
 
 
-  runApp(ProviderScope(child: const MyApp()));
-
-
-
+  runApp(ProviderScope(
+      child: const MyApp()));
 }
 
 
@@ -67,10 +68,17 @@ class MyApp extends HookConsumerWidget  {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.listen<User?>(userProvider, (prev, next) {
+      if (prev != null && prev.isGuest == false && next == null) {
+        showSessionExpiredSheet(ref);
+      }
+    });
+
+
+
     final handler = useMemoized(() => DeepLinkHandler());
     useEffect(() {
       handler.init(context);
-
       return handler.dispose;
     }, const []);
 

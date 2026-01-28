@@ -11,8 +11,8 @@ class ProfileRepoImpl extends ProfileRepo{
   ProfileRepoImpl(this.api);
 
   @override
-  Future<ProfileModel> getProfileApi(String userId,String deviceId) async{
-    final url = "${ApiUrls.profileApiUrl+userId}&device_id=$deviceId";
+  Future<ProfileModel> getProfileApi(String userId,String deviceId,String?token) async{
+    final url = "${ApiUrls.profileApiUrl+userId}&device_id=$deviceId&token=$token";
     final data = await api.getGetApiResponse(url);
 
     return ProfileModel.fromJson(data);

@@ -3,9 +3,11 @@ class Assets {
   Assets._();
 
   static const String fontPoppinsRegular = 'assets/font/poppins_regular.ttf';
+  static const String iconDevice = 'assets/icon/device.png';
   static const String iconExitApp = 'assets/icon/exit_app.png';
   static const String iconFree = 'assets/icon/free.png';
   static const String iconHome = 'assets/icon/home.png';
+  static const String iconMobile = 'assets/icon/mobile.png';
   static const String iconMyPlan = 'assets/icon/my_plan.png';
   static const String iconNoInternet = 'assets/icon/no_internet.png';
   static const String iconOtts = 'assets/icon/otts.png';
@@ -13,6 +15,7 @@ class Assets {
   static const String iconPaymentSuccess = 'assets/icon/payment_success.png';
   static const String iconPrenium = 'assets/icon/prenium.png';
   static const String iconSearch = 'assets/icon/search.png';
+  static const String iconUnauth = 'assets/icon/unauth.png';
   static const String imageBhojpuriLang = 'assets/image/bhojpuri_lang.png';
   static const String imageBlock = 'assets/image/block.png';
   static const String imageBrokenImage = 'assets/image/broken_image.png';
@@ -22,6 +25,7 @@ class Assets {
   static const String imageHindiLang = 'assets/image/hindi_lang.png';
   static const String imageLogoutIc = 'assets/image/logout_ic.png';
   static const String imageNoCustomerImage = 'assets/image/no_customer_image.png';
+  static const String imageNoDataFound = 'assets/image/no_data_found.png';
   static const String imagePlaystore = 'assets/image/playstore.png';
   static const String imagePunjabiLang = 'assets/image/punjabi_lang.png';
   static const String imageRamSetu = 'assets/image/ram_setu.jpg';

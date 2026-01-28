@@ -20,7 +20,7 @@ class AppInputFormatters {
   /// Letters and spaces only
   static List<TextInputFormatter> nameOnly = [
     FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z\s]')),
-    LengthLimitingTextInputFormatter(40),
+    LengthLimitingTextInputFormatter(35),
   ];
 
   /// Alphanumeric + email symbols

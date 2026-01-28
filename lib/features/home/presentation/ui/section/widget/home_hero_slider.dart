@@ -2,17 +2,14 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 import 'package:stream4videos/core/res/app_btn.dart';
 import 'package:stream4videos/core/res/app_cached_image.dart';
 import 'package:stream4videos/core/res/app_color.dart';
 import 'package:stream4videos/core/res/app_constant.dart';
 import 'package:stream4videos/core/res/app_size.dart';
 import 'package:stream4videos/core/res/constant/const_text.dart';
-import 'package:stream4videos/core/utils/routes/routes_name.dart';
 import 'package:stream4videos/features/home/data/model/get_home_banner_model.dart';
 import 'package:stream4videos/features/home/presentation/ui/section/home_category/widget/movie_detail_open_bottom_sheet.dart';
-import 'package:stream4videos/features/share_pref/user_provider.dart';
 import 'package:stream4videos/l10n/app_localizations.dart';
 import 'package:stream4videos/main.dart';
 

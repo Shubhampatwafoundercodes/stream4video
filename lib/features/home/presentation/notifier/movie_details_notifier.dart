@@ -70,10 +70,12 @@ class MovieDetailsNotifier extends StateNotifier<MovieDetailsState> {
   Future<void> movieDetailsApi(String movieId) async {
     try {
       state = state.copyWith(isLoading: true, error: null);
-      final userId=ref.read(userProvider.notifier).userId;
+      final userN=ref.read(userProvider.notifier);
+      final userId=userN.userId;
+      final token=userN.token;
       final catNo= ref.read(categoryNotifierProvider.notifier);
       catNo.setInitialWatchlist(false);
-      final res = await repo.movieDetailsApi(movieId,userId: userId);
+      final res = await repo.movieDetailsApi(movieId,userId: userId,token: token);
       if(res.status==true){
         final isSeries = res.data?.movieDetails?.isMovie == false;
         state = state.copyWith(
@@ -104,7 +106,6 @@ class MovieDetailsNotifier extends StateNotifier<MovieDetailsState> {
         isLoading: false,
         error: e.toString(),
       );
-      rethrow;
     }
   }
 

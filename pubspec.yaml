@@ -4,7 +4,7 @@ description: "This is a ott platform"
 publish_to: 'none'
 
 
-version: 1.0.0+1
+version: 3.0.0
 
 environment:
   sdk: ^3.9.2
@@ -60,6 +60,8 @@ dependencies:
   #  payment CashFree
   flutter_cashfree_pg_sdk: ^2.2.9+47
   cupertino_icons: ^1.0.8
+  screen_brightness: ^2.1.7
+  volume_controller: ^3.4.1
 
 dev_dependencies:
   flutter_test:

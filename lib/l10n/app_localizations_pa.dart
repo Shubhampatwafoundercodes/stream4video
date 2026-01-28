@@ -443,4 +443,46 @@ class AppLocalizationsPa extends AppLocalizations {
   String addonPriceSubtitle(Object addon, Object price) {
     return '$addon ₹$price ਲਈ';
   }
+
+  @override
+  String get noNotificationsFound => 'ਕੋਈ ਨੋਟੀਫਿਕੇਸ਼ਨ ਨਹੀਂ ਮਿਲਿਆ';
+
+  @override
+  String get premiumContent => 'ਪ੍ਰੀਮੀਅਮ ਸਮੱਗਰੀ';
+
+  @override
+  String get subscribeToWatch => 'ਇਹ ਵੀਡੀਓ ਦੇਖਣ ਲਈ ਸਬਸਕ੍ਰਾਈਬ ਕਰੋ';
+
+  @override
+  String get subscribeNow => 'ਸਬਸਕ੍ਰਾਈਬ ਕਰੋ';
+
+  @override
+  String get later => 'ਬਾਅਦ ਵਿੱਚ';
+
+  @override
+  String get loginRequired => 'ਲਾਗਇਨ ਲਾਜ਼ਮੀ ਹੈ';
+
+  @override
+  String get loginFirstToContinue => 'ਜਾਰੀ ਰੱਖਣ ਲਈ ਪਹਿਲਾਂ ਲਾਗਇਨ ਕਰੋ';
+
+  @override
+  String get login => 'ਲਾਗਇਨ';
+
+  @override
+  String get cancel => 'ਰੱਦ ਕਰੋ';
+
+  @override
+  String get noInternet => 'ਇੰਟਰਨੈੱਟ ਨਹੀਂ ਹੈ';
+
+  @override
+  String get turnOnInternet => 'ਕਿਰਪਾ ਕਰਕੇ ਆਪਣਾ ਇੰਟਰਨੈੱਟ ਚਾਲੂ ਕਰੋ';
+
+  @override
+  String get retry => 'ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ';
+
+  @override
+  String get sessionExpiredTitle => 'ਮੁੜ ਲਾਗਇਨ ਕਰੋ';
+
+  @override
+  String get sessionExpiredSubtitle => 'ਤੁਹਾਡੀ ਸੁਰੱਖਿਆ ਲਈ ਤੁਹਾਨੂੰ ਲਾਗ ਆਉਟ ਕਰ ਦਿੱਤਾ ਗਿਆ ਹੈ। ਜਾਰੀ ਰੱਖਣ ਲਈ ਮੁੜ ਲਾਗਇਨ ਕਰੋ।';
 }

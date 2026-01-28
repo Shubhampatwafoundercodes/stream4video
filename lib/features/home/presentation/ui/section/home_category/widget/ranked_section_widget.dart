@@ -14,6 +14,7 @@ import 'package:stream4videos/core/services/check_user_login_or_not/check_user_p
 import 'package:stream4videos/features/home/data/model/common_model/content_poster_item_model.dart';
 import 'package:stream4videos/features/home/presentation/ui/section/home_category/widget/movie_detail_open_bottom_sheet.dart';
 import 'package:stream4videos/l10n/app_localizations.dart';
+import 'package:stream4videos/main.dart';
 
 
 
@@ -137,12 +138,16 @@ class BannerSectionWidget extends StatelessWidget {
                 right: index == items.length - 1 ? 0 : 8,
               ),
               decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(item.image ?? ""),
-                  fit: BoxFit.contain,
-                ),
+                // image: DecorationImage(
+                //   image: NetworkImage(item.image ?? ""),
+                //   fit: BoxFit.contain,
+                // ),
               ),
-              child: AppCachedImage(url: item.image ?? "", fit: BoxFit.cover),
+              child: AppCachedImage(
+                  width: screenWidth,
+                  height: height,
+
+                  url: item.image ?? "", fit: BoxFit.cover),
             ),
           );
         },

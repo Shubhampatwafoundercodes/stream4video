@@ -6,7 +6,7 @@ class ApiUrls {
   static const baseUrl='https://admin.stream4video.com/api';
   static const loginUrl='$baseUrl/login';
   static const logoutActiveDeviceUrl='$baseUrl/logout';
-  static const sendOtpUrl = 'https://otp.fctechteam.org/send_otp.php?mode=test&digit=6&mobile=';
+  static const sendOtpUrl = 'https://otp.fctechteam.org/send_otp.php?mode=live&digit=6&mobile=';
   static const verifyOtpUrl = 'https://otp.fctechteam.org/verifyotp.php?mobile=';
   static const getAllCatUrl='$baseUrl/categories';
   static const getSubCatUrl='$baseUrl/home-sections';

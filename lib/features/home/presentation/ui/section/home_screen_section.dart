@@ -9,6 +9,7 @@ import 'package:stream4videos/core/res/app_size.dart';
 import 'package:stream4videos/core/res/constant/const_text.dart';
 import 'package:stream4videos/core/services/check_user_login_or_not/check_user_proceed.dart';
 import 'package:stream4videos/core/utils/routes/routes_name.dart';
+import 'package:stream4videos/core/widget/common_no_data_found.dart';
 import 'package:stream4videos/core/widget/shimmer/home_screen_shimmer.dart';
 import 'package:stream4videos/features/home/presentation/notifier/cat_notifier.dart';
 import 'package:stream4videos/features/home/presentation/ui/bottom_nav_bar.dart';
@@ -103,11 +104,28 @@ class HomeScreenSection extends HookConsumerWidget {
 
 
             },
-            child: SingleChildScrollView(
+            child: (banners.isEmpty && sections.isEmpty)
+                ? ListView(
+                  children: [
+                    Center(
+                      child: CommonNoDataFound(
+                                    title: t.search_no_results, // localization key
+                                  ),
+                    ),
+                  ],
+                )
+                :
+
+
+
+            SingleChildScrollView(
                     controller: scrollController,
                     child: Column(
             children: [
-               HomeHeroSlider(banners: banners,),
+              if(banners.isNotEmpty)
+                HomeHeroSlider(banners: banners)
+              else
+                AppSizes.spaceH(100),
               if (!state.isSticky) _buildStickyTabBar(ref,context),
               if (categoryState.isAddWatchListLoading)
                 const Center(child: MovieSectionShimmer(),)

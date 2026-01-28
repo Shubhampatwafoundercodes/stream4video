@@ -37,8 +37,18 @@ class LoginScreen extends HookConsumerWidget {
     final authN=ref.read(authNotifierProvider.notifier);
     final authState=ref.watch(authNotifierProvider);
 
+    final banners = authState.bannerModel?.data ?? [];
+
     useEffect((){
-      authN.allBannerApi();
+      WidgetsBinding.instance.addPostFrameCallback((_){
+
+        if(banners.isEmpty ){
+          authN.allBannerApi();
+
+        }
+
+
+      });
       return null;
 
     },[]);
@@ -47,7 +57,6 @@ class LoginScreen extends HookConsumerWidget {
     final scale = useState(1.3);
     useState(true);
     final zoomTimer = useRef<Timer?>(null);
-    final banners = authState.bannerModel?.data ?? [];
     final hasBanners = banners.isNotEmpty;
     final safeIndex = hasBanners
         ? currentIndex.value.clamp(0, banners.length - 1)

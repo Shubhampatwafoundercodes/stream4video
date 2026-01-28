@@ -15,7 +15,6 @@ class CategoryState {
   final bool isAddWatchListLoading;
   final bool isSubCatLoading;
 
-
   final bool isInWatchlist;
 
   final GetAllCategoriesModel? categories;
@@ -23,14 +22,11 @@ class CategoryState {
   final List<ContentPosterItemModel>? myWatchListModelData;
   final GetSubCategoriesModel? subCategories;
 
-
   final List<ContentPosterItemModel> allSearchItems;
   final List<ContentPosterItemModel>? searchedItems;
 
   final bool isFreeSectionLoading;
   final FreeSectionModel? freeSectionModel;
-
-
 
   CategoryState({
     this.isLoading = false,
@@ -39,9 +35,8 @@ class CategoryState {
     this.homeBannerModel,
     this.myWatchListModelData,
     this.subCategories,
-    this.isAddWatchListLoading=false,
+    this.isAddWatchListLoading = false,
     this.isInWatchlist = false,
-
 
     this.allSearchItems = const [],
 
@@ -57,11 +52,8 @@ class CategoryState {
     bool? isSubCatLoading,
     bool? isInWatchlist,
 
-
-
     bool? isFreeSectionLoading,
     FreeSectionModel? freeSectionModel,
-
 
     GetAllCategoriesModel? categories,
     HomeBannerModel? homeBannerModel,
@@ -73,9 +65,9 @@ class CategoryState {
   }) {
     return CategoryState(
       isLoading: isLoading ?? this.isLoading,
-      isAddWatchListLoading: isAddWatchListLoading ?? this.isAddWatchListLoading,
+      isAddWatchListLoading:
+          isAddWatchListLoading ?? this.isAddWatchListLoading,
       categories: categories ?? this.categories,
-
 
       isFreeSectionLoading: isFreeSectionLoading ?? this.isFreeSectionLoading,
       freeSectionModel: freeSectionModel ?? this.freeSectionModel,
@@ -86,9 +78,7 @@ class CategoryState {
       subCategories: subCategories ?? this.subCategories,
       isSubCatLoading: isSubCatLoading ?? this.isSubCatLoading,
 
-
-
-      allSearchItems: allSearchItems??this.allSearchItems,
+      allSearchItems: allSearchItems ?? this.allSearchItems,
 
       searchedItems: searchedItems ?? this.searchedItems,
     );
@@ -96,75 +86,66 @@ class CategoryState {
 }
 
 final categoryNotifierProvider =
-StateNotifierProvider<CategoryNotifier, CategoryState>((ref) {
-  final api = GetAllCatRepoImpl(NetworkApiServicesDio(ref));
-  return CategoryNotifier(api,ref);
-});
-
+    StateNotifierProvider<CategoryNotifier, CategoryState>((ref) {
+      final api = GetAllCatRepoImpl(NetworkApiServicesDio(ref));
+      return CategoryNotifier(api, ref);
+    });
 
 class CategoryNotifier extends StateNotifier<CategoryState> {
   final GetAllCatRepo _repo;
   final Ref _ref;
 
-  CategoryNotifier(this._repo,this._ref) : super(CategoryState());
+  CategoryNotifier(this._repo, this._ref) : super(CategoryState());
 
   Future<void> getAllCategories() async {
     state = state.copyWith(isLoading: true);
     try {
       await homeBannerApi();
       final res = await _repo.getAllCatAPi();
-      if (res.success==true) {
-        await  getSubCategories("1",isSearchListDataAdd: true);
-        state = state.copyWith(
-          isLoading: false,
-          categories: res,
-        );
+      if (res.success == true) {
+        await getSubCategories("1", isSearchListDataAdd: true);
+        state = state.copyWith(isLoading: false, categories: res);
       } else {
         state = state.copyWith(isLoading: false);
       }
     } catch (e) {
       state = state.copyWith(isLoading: false);
       rethrow;
-
     }
   }
 
-  Future<void> getSubCategories(String catId,{ bool isSearchListDataAdd = false}) async {
+  Future<void> getSubCategories(
+    String catId, {
+    bool isSearchListDataAdd = false,
+  }) async
+  {
     state = state.copyWith(isSubCatLoading: true);
     try {
       final res = await _repo.getSubCatAPi(catId);
-      if (res.success==true) {
-
-        if(isSearchListDataAdd==true){
+      if (res.success == true) {
+        if (isSearchListDataAdd == true) {
           final List<ContentPosterItemModel> tempList = [];
           // ignore: dead_code
-          final sectionData=res.data;
-          if(sectionData.isNotEmpty){
-            for(final section in sectionData){
+          final sectionData = res.data;
+          if (sectionData.isNotEmpty) {
+            for (final section in sectionData) {
               tempList.addAll(section.items);
             }
-            state=state.copyWith(
+            state = state.copyWith(
               allSearchItems: tempList,
               searchedItems: null,
             );
-
           }
-
         }
 
-        state = state.copyWith(
-          isSubCatLoading: false,
-          subCategories: res,
-        );
+        state = state.copyWith(isSubCatLoading: false, subCategories: res);
       } else {
         state = state.copyWith(isSubCatLoading: false);
       }
       state = state.copyWith(isSubCatLoading: false);
-
     } catch (e) {
       state = state.copyWith(isSubCatLoading: false);
       rethrow;
-
     }
   }
 
@@ -174,24 +155,22 @@ class CategoryNotifier extends StateNotifier<CategoryState> {
       return;
     }
 
-
     final filtered = state.allSearchItems
-        .where((item) =>
-    item.title != null &&
-        item.title!.toLowerCase().contains(query.toLowerCase()))
+        .where(
+          (item) =>
+              item.title != null &&
+              item.title!.toLowerCase().contains(query.toLowerCase()),
+        )
         .toList();
-
 
     state = state.copyWith(searchedItems: filtered);
   }
-
-
 
   Future<void> homeBannerApi() async {
     // state = state.copyWith(isLoading: true);
     try {
       final res = await _repo.homeBannerApi();
-      if (res.success==true) {
+      if (res.success == true) {
         state = state.copyWith(
           // isLoading: false,
           homeBannerModel: res,
@@ -201,11 +180,8 @@ class CategoryNotifier extends StateNotifier<CategoryState> {
       }
     } catch (e) {
       // state = state.copyWith(isLoading: false);
-      rethrow;
-
     }
   }
-
 
   // Future<void> addWatchListApi(String movieId)async{
   //   state = state.copyWith(isAddWatchListLoading: true);
@@ -246,8 +222,6 @@ class CategoryNotifier extends StateNotifier<CategoryState> {
     if (userId == null) return;
 
     final previousValue = state.isInWatchlist;
-
-    // ✅ STEP 1: Local optimistic update
     state = state.copyWith(
       isAddWatchListLoading: true,
       isInWatchlist: !previousValue,
@@ -260,30 +234,32 @@ class CategoryNotifier extends StateNotifier<CategoryState> {
       });
 
       if (res["success"] != true) {
-        // ❌ API responded but failed → rollback
         state = state.copyWith(isInWatchlist: previousValue);
       }
-      // ✅ success → kuch bhi mat karo (local state already correct)
     } catch (e) {
-      // ❌ API error → rollback
       state = state.copyWith(isInWatchlist: previousValue);
       rethrow;
-
     } finally {
       state = state.copyWith(isAddWatchListLoading: false);
     }
   }
 
-
   void setInitialWatchlist(bool value) {
     state = state.copyWith(isInWatchlist: value);
   }
 
-
-  Future<void> getMyWatchListApi()async {
-
+  Future<void> getMyWatchListApi() async {
     state = state.copyWith(isAddWatchListLoading: true);
-    final userId=_ref.read(userProvider.notifier).userId;
+    final userId = _ref.read(userProvider.notifier).userId;
+
+    if (userId == null || userId.isEmpty) {
+      state = state.copyWith(
+        isAddWatchListLoading: false,
+        myWatchListModelData: [],
+      );
+      return;
+    }
+
     try {
       final res = await _repo.getMyWatchListApi(userId.toString());
       if (res["success"] == true) {
@@ -301,20 +277,21 @@ class CategoryNotifier extends StateNotifier<CategoryState> {
           isAddWatchListLoading: false,
           myWatchListModelData: [],
         );
+      }
+    } catch (e) {
+      state = state.copyWith(
+        isAddWatchListLoading: false,
+        myWatchListModelData: null,
+      );
+      // rethrow;
     }
-    }catch (e) {
-      state = state.copyWith(isAddWatchListLoading: false,myWatchListModelData: null);
-      rethrow;
-    }
-
   }
-
 
   Future<void> getSectionApi({required bool isPremium}) async {
     state = state.copyWith(isFreeSectionLoading: true);
     try {
       final res = await _repo.getSection(isPremium: isPremium);
-      if (res.success==true) {
+      if (res.success == true) {
         state = state.copyWith(
           isFreeSectionLoading: false,
           freeSectionModel: res,
@@ -325,10 +302,6 @@ class CategoryNotifier extends StateNotifier<CategoryState> {
     } catch (e) {
       state = state.copyWith(isFreeSectionLoading: false);
       rethrow;
-
     }
   }
-
-
 }
-

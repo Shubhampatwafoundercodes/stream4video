@@ -226,5 +226,22 @@
       "addon": {},
       "price": {}
     }
-  }
+  },
+  "noNotificationsFound": "कोई सूचना नहीं मिली",
+  "premiumContent": "प्रीमियम सामग्री",
+  "subscribeToWatch": "इस वीडियो को देखने के लिए सब्सक्राइब करें",
+  "subscribeNow": "सब्सक्राइब करें",
+  "later": "बाद में",
+
+  "loginRequired": "लॉगिन आवश्यक है",
+  "loginFirstToContinue": "जारी रखने के लिए पहले लॉगिन करें",
+  "login": "लॉगिन",
+  "cancel": "रद्द करें",
+
+  "noInternet": "इंटरनेट नहीं है",
+  "turnOnInternet": "कृपया अपना इंटरनेट चालू करें",
+  "retry": "पुनः प्रयास करें",
+
+  "sessionExpiredTitle": "दोबारा लॉगिन करें",
+  "sessionExpiredSubtitle": "आपकी सुरक्षा के लिए आपको लॉग आउट कर दिया गया है। जारी रखने के लिए फिर से लॉगिन करें।"
 }

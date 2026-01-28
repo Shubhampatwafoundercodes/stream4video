@@ -98,4 +98,5 @@ class ServiceUnavailableException extends AppException {
 class GatewayTimeoutException extends AppException {
   GatewayTimeoutException([String? message])
       : super(message, "Gateway Timeout: ");
+
 }

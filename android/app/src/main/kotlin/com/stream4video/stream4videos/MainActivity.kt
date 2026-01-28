@@ -1,4 +1,4 @@
-package com.stream4video.stream4videos
+package com.fc.stream4video
 
 import io.flutter.embedding.android.FlutterActivity
 

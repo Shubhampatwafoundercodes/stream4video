@@ -7,8 +7,10 @@ import 'package:stream4videos/core/res/app_constant.dart';
 import 'package:stream4videos/core/res/app_size.dart';
 import 'package:stream4videos/core/res/constant/const_text.dart';
 import 'package:stream4videos/core/services/check_user_login_or_not/check_user_proceed.dart';
+// ignore: unused_import
 import 'package:stream4videos/core/utils/global_loader/global_loader.dart';
 import 'package:stream4videos/core/widget/common_confirm_sheet.dart';
+import 'package:stream4videos/core/widget/common_no_data_found.dart';
 import 'package:stream4videos/core/widget/shimmer/home_screen_shimmer.dart';
 
 import 'package:stream4videos/features/home/presentation/notifier/cat_notifier.dart';
@@ -61,7 +63,15 @@ class _MyPlanScreenState extends ConsumerState<SubscriptionPlanWidget> {
           final plansData = subState.plans?.data;
 
           if (plansData == null) {
-            return  Center(
+            return ListView(
+              children: [
+                CommonNoDataFound(title: t.plan_no_available,),
+              ],
+            );
+
+
+
+              Center(
               child: ConstText(
                 text: t.plan_no_available,
                 color: Colors.white54,
@@ -90,7 +100,11 @@ class _MyPlanScreenState extends ConsumerState<SubscriptionPlanWidget> {
           return SingleChildScrollView(
             child: Column(
               children: [
-                HomeHeroSlider(banners: banners),
+
+                if(banners.isNotEmpty)
+                HomeHeroSlider(banners: banners)
+                else
+                 AppSizes.spaceH(100),
 
                 _buildStickyTabBar(durationKeys),
 
@@ -137,8 +151,7 @@ class _MyPlanScreenState extends ConsumerState<SubscriptionPlanWidget> {
                             imagePath: Assets.iconMyPlan,
                             onConfirm: () async {
                                ref.read(paymentProvider.notifier)
-                                  .startPayment(
-                                amount: double.tryParse(selectedPlan!.price ?? "0")??0.0,
+                                  .startPayment(amount: double.tryParse(selectedPlan!.price ?? "0")??0.0,
                                 planId: selectedPlan!.id.toString(),
                               );
                               // ignore: use_build_context_synchronously

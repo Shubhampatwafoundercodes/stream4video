@@ -234,5 +234,26 @@
       "addon": {},
       "price": {}
     }
-  }
+  },
+
+  "noNotificationsFound": "No notifications found",
+
+
+  "premiumContent": "Premium content",
+  "subscribeToWatch": "Please subscribe to watch this video",
+  "subscribeNow": "Subscribe Now",
+  "later": "Later",
+
+  "loginRequired": "Login required",
+  "loginFirstToContinue": "Please login first to continue",
+  "login": "Login",
+  "cancel": "Cancel",
+
+  "noInternet": "No Internet",
+  "turnOnInternet": "Please turn on your internet connection",
+  "retry": "Retry",
+
+  "sessionExpiredTitle": "Please Log In Again",
+  "sessionExpiredSubtitle": "For your security, you’ve been logged out. Log in again to continue."
+
 }

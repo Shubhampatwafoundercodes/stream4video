@@ -7,6 +7,25 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:604902263730:android:731fbfaa6481b00051b2ab",
+        "android_client_info": {
+          "package_name": "com.fc.stream4video"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPiNmp-7G640ms46HyrrNwtuB01Yuw7yw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:604902263730:android:f651155c17d9d06551b2ab",
         "android_client_info": {
           "package_name": "com.stream4video.stream4videos"

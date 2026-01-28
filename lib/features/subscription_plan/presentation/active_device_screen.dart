@@ -11,6 +11,7 @@ import 'package:stream4videos/core/res/app_size.dart';
 import 'package:stream4videos/core/res/constant/const_text.dart';
 import 'package:stream4videos/core/utils/global_loader/global_loader.dart';
 import 'package:stream4videos/core/utils/routes/routes_name.dart';
+import 'package:stream4videos/core/widget/bottom_sheet/show_sheet.dart';
 import 'package:stream4videos/core/widget/common_confirm_sheet.dart';
 import 'package:stream4videos/core/widget/common_screen_container.dart';
 import 'package:stream4videos/features/auth/presentation/notifier/auth_notifier.dart';
@@ -197,6 +198,10 @@ class ActiveDeviceScreen extends HookConsumerWidget {
 
                                 return;
                               }
+                              if(loginResult==3){
+                                showSessionExpiredSheet(ref);
+
+                              }
 
                               // await ref.read(userProvider.notifier).clearUser();
                             },
@@ -257,9 +262,12 @@ class ActiveDeviceScreen extends HookConsumerWidget {
               color: isCurrent ? Colors.green.withAlpha(20) : Colors.white10,
               shape: BoxShape.circle,
             ),
-            child: Icon(
-              Icons.devices,
-              color: isCurrent ? Colors.greenAccent : Colors.white70,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Image.asset(
+                Assets.iconMobile,
+                color: isCurrent ? Colors.greenAccent : Colors.white70,
+              ),
             ),
           ),
 

@@ -19,9 +19,18 @@ class AppInterceptor extends Interceptor {
   }
 
   @override
-  void onError(DioException err, ErrorInterceptorHandler handler) {
-    if (err.response?.statusCode == 401) {
-      ref.read(userProvider.notifier).clearUser();
+  Future<void> onError(DioException err, ErrorInterceptorHandler handler) async {
+
+    final statusCode = err.response?.statusCode;
+
+
+    if (statusCode == 401 ) {
+      final userN = ref.read(userProvider.notifier);
+      final user = ref.read(userProvider);
+      if (user != null && user.isGuest == false) {
+        await userN.clearAll();
+        ref.invalidate(userProvider);
+      }
     }
     super.onError(err, handler);
   }

@@ -49,7 +49,7 @@
 //     );
 //   }
 // }
-// ignore_for_file: use_build_context_synchronously
+// ignore_for_file: use_build_context_synchronously, unused_import
 
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -64,6 +64,7 @@ import 'package:stream4videos/core/res/constant/const_text.dart';
 import 'package:stream4videos/core/services/check_user_login_or_not/check_user_proceed.dart';
 import 'package:stream4videos/core/utils/global_loader/global_loader.dart';
 import 'package:stream4videos/core/widget/common_confirm_sheet.dart';
+import 'package:stream4videos/core/widget/common_no_data_found.dart' show CommonNoDataFound;
 import 'package:stream4videos/core/widget/shimmer/home_screen_shimmer.dart';
 
 import 'package:stream4videos/features/home/presentation/notifier/cat_notifier.dart';
@@ -92,8 +93,12 @@ class CurrentPlanWithAddOnWidget extends HookConsumerWidget {
     final banners = categoryState.homeBannerModel?.data ?? [];
     final currentPlan = profileState.profile?.profile?.subscriptionData;
     final planId=currentPlan?.planId;
+    if (planId==null) {
+      return CommonNoDataFound(title: t.plan_no_available,);
+    }
 
     useEffect(() {
+      // ignore: unnecessary_null_comparison
       if (planId != null) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
           subNotifier.getSubscriptionAddOnPlanApi(
@@ -110,15 +115,21 @@ class CurrentPlanWithAddOnWidget extends HookConsumerWidget {
       return const Center(child: HomeScreenShimmer());
     }
     if (currentPlan==null) {
-      return SizedBox.shrink();
+      return ListView(
+        children: [
+          CommonNoDataFound(title: t.plan_no_available,),
+        ],
+      );
     }
 
     return SingleChildScrollView(
       child: Column(
         children: [
-          HomeHeroSlider(banners: banners),
-
-          AppSizes.spaceH(16),
+          if(banners.isNotEmpty)
+            HomeHeroSlider(banners: banners)
+          else
+            AppSizes.spaceH(100),
+             AppSizes.spaceH(16),
 
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 15.w),

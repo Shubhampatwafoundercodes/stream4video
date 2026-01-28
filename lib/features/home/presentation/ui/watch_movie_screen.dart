@@ -16,6 +16,7 @@ import 'package:stream4videos/core/services/check_user_login_or_not/check_user_p
 import 'package:stream4videos/core/utils/format/date_time_formater.dart';
 import 'package:stream4videos/core/utils/global_loader/global_loader.dart';
 import 'package:stream4videos/core/utils/routes/routes_name.dart';
+import 'package:stream4videos/core/widget/common_no_data_found.dart';
 import 'package:stream4videos/core/widget/common_screen_container.dart';
 import 'package:stream4videos/core/widget/expandable_description.dart';
 import 'package:stream4videos/core/widget/shimmer/home_screen_shimmer.dart';
@@ -42,7 +43,6 @@ class WatchMovieScreen extends HookConsumerWidget {
     useEffect(() {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         notifier.updateSticky(false);
-
         notifier.movieDetailsApi(contentId.toString());
       });
       return ;
@@ -84,7 +84,7 @@ class WatchMovieScreen extends HookConsumerWidget {
           child:state.isLoading?
           HomeScreenShimmer():
           movie==null?
-          Center(child: Text(t.search_no_results),)
+          CommonNoDataFound(title: t.search_no_results,)
               : SingleChildScrollView(
             controller: scrollController,
             physics: ClampingScrollPhysics(),

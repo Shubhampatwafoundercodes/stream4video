@@ -69,8 +69,6 @@ void checkLoginAndPremium({
     );
     return;
   }
-
-  // 3️⃣ Allowed
    onAllowed();
 }
 

@@ -385,7 +385,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.stream4video.stream4videos.RunnerTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fc.stream4video.RunnerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/stream4videos.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/stream4videos";
@@ -399,7 +399,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.stream4video.stream4videos.RunnerTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fc.stream4video.RunnerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/stream4videos.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/stream4videos";
@@ -413,7 +413,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.stream4video.stream4videos.RunnerTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fc.stream4video.RunnerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/stream4videos.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/stream4videos";

@@ -72,10 +72,8 @@ class MyPlanScreen extends HookConsumerWidget {
 
       }
     });
-
-
+    final isGuest = user?.isGuest == true;
     final hasActivePlan = user?.hasActivePlan == true;
-
     return SafeArea(
       top: false,
       child: Scaffold(
@@ -98,12 +96,14 @@ class MyPlanScreen extends HookConsumerWidget {
           color: AppColors.primary,
           backgroundColor: AppColors.blackPrimary,
           onRefresh: ()async{
-
-            await ref.read(profileNotifierProvider.notifier).getProfile();
-          },
-          child: hasActivePlan?
-              CurrentPlanWithAddOnWidget():
-               SubscriptionPlanWidget(),
+            if (!isGuest) {
+              await ref.read(profileNotifierProvider.notifier).getProfile();
+            }          },
+          child: isGuest
+              ? const SubscriptionPlanWidget()
+              : (hasActivePlan
+              ? const CurrentPlanWithAddOnWidget()
+              : const SubscriptionPlanWidget()),
         ),
       ),
     );

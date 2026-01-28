@@ -13,12 +13,19 @@ class MovieDetailsRepoImpl extends MovieDetailsRepo{
 
 
   @override
-  Future<GetMovieDetailsModel> movieDetailsApi(String contentId,{String? userId}) async{
-    final url = '${ApiUrls.movieDetailsUrl}/$contentId';
+  Future<GetMovieDetailsModel> movieDetailsApi(String contentId,{String? userId,    String? token,}) async{
+    final url = '${ApiUrls.movieDetailsUrl}$contentId';
+    final Map<String, dynamic> query = {};
+    if (userId != null && userId.isNotEmpty) {
+      query['user_id'] = userId;
+    }
 
+    if (token != null && token.isNotEmpty) {
+      query['token'] = token;
+    }
     final data = await api.getGetApiResponse(
       url,
-      queryParameters: userId != null ? {'user_id': userId} : null,
+      queryParameters: query.isEmpty ? null : query,
     );
     return GetMovieDetailsModel.fromJson(data);
   }

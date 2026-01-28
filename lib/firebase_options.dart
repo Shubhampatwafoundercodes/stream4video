@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDPiNmp-7G640ms46HyrrNwtuB01Yuw7yw',
-    appId: '1:604902263730:android:f651155c17d9d06551b2ab',
+    appId: '1:604902263730:android:731fbfaa6481b00051b2ab',
     messagingSenderId: '604902263730',
     projectId: 'stream4video',
     storageBucket: 'stream4video.firebasestorage.app',
@@ -59,20 +59,20 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyAxmfy9hUnAOruVY65Akx7-f-Re3sp08Yw',
-    appId: '1:604902263730:ios:78c888bf6ccabd1d51b2ab',
+    appId: '1:604902263730:ios:83af9ef4e5fc377151b2ab',
     messagingSenderId: '604902263730',
     projectId: 'stream4video',
     storageBucket: 'stream4video.firebasestorage.app',
-    iosBundleId: 'com.stream4video.stream4videos',
+    iosBundleId: 'com.fc.stream4video',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyAxmfy9hUnAOruVY65Akx7-f-Re3sp08Yw',
-    appId: '1:604902263730:ios:78c888bf6ccabd1d51b2ab',
+    appId: '1:604902263730:ios:83af9ef4e5fc377151b2ab',
     messagingSenderId: '604902263730',
     projectId: 'stream4video',
     storageBucket: 'stream4video.firebasestorage.app',
-    iosBundleId: 'com.stream4video.stream4videos',
+    iosBundleId: 'com.fc.stream4video',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(

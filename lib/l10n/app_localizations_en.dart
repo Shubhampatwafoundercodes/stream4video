@@ -443,4 +443,46 @@ class AppLocalizationsEn extends AppLocalizations {
   String addonPriceSubtitle(Object addon, Object price) {
     return '$addon for ₹$price';
   }
+
+  @override
+  String get noNotificationsFound => 'No notifications found';
+
+  @override
+  String get premiumContent => 'Premium content';
+
+  @override
+  String get subscribeToWatch => 'Please subscribe to watch this video';
+
+  @override
+  String get subscribeNow => 'Subscribe Now';
+
+  @override
+  String get later => 'Later';
+
+  @override
+  String get loginRequired => 'Login required';
+
+  @override
+  String get loginFirstToContinue => 'Please login first to continue';
+
+  @override
+  String get login => 'Login';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get noInternet => 'No Internet';
+
+  @override
+  String get turnOnInternet => 'Please turn on your internet connection';
+
+  @override
+  String get retry => 'Retry';
+
+  @override
+  String get sessionExpiredTitle => 'Please Log In Again';
+
+  @override
+  String get sessionExpiredSubtitle => 'For your security, you’ve been logged out. Log in again to continue.';
 }

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+// ignore: unused_import
 import 'package:stream4videos/features/share_pref/user_provider.dart';
 
 import 'app_interceptor.dart';
@@ -37,17 +38,17 @@ class NetworkApiServicesDio extends BaseApiServices {
   // }
 
 
-  /// Common headers with token
-  Map<String, String> _getHeadersWithToken() {
-    final user = _ref.read(userProvider);
-    final headers = {
-      'Content-Type': 'application/json; charset=UTF-8',
-    };
-    if (user != null &&  user.token !=null &&  user.token!.isNotEmpty) {
-      headers['Authorization'] = 'Bearer ${user.token}';
-    }
-    return headers;
-  }
+  // /// Common headers with token
+  // Map<String, String> _getHeadersWithToken() {
+  //   final user = _ref.read(userProvider);
+  //   final headers = {
+  //     'Content-Type': 'application/json; charset=UTF-8',
+  //   };
+  //   if (user != null &&  user.token !=null &&  user.token!.isNotEmpty) {
+  //     headers['Authorization'] = 'Bearer ${user.token}';
+  //   }
+  //   return headers;
+  // }
 
   @override
   Future<dynamic> getGetApiResponse(String url,
@@ -97,7 +98,7 @@ class NetworkApiServicesDio extends BaseApiServices {
   @override
   Future<dynamic> getPatchApiResponse(String url, dynamic data, {Map<String, dynamic>? queryParameters}) async {
     try {
-      final response = await _dio.patch(url, data: data, queryParameters: queryParameters, options: Options(headers: _getHeadersWithToken()));
+      final response = await _dio.patch(url, data: data, queryParameters: queryParameters,);
       return _returnResponse(response);
     } on DioException catch (e) {
       throw _handleDioError(e);

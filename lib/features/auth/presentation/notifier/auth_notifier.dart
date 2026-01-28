@@ -1,3 +1,5 @@
+// ignore_for_file: dead_code
+
 import 'package:flutter/cupertino.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:hooks_riverpod/legacy.dart';
@@ -165,10 +167,9 @@ class AuthNotifier extends StateNotifier<AuthState> {
       debugPrint("🔴 isLoginScreen = $isLoginScreen");
       await DeviceInfoService().getDeviceInfo();
       final userNotifier = ref.read(userProvider.notifier);
-
-
       String userId="";
       String device="";
+      String token="";
      if(isLoginScreen){
        userId = state.response?.userId?.toString() ?? "";
        device=deviceId;
@@ -178,6 +179,7 @@ class AuthNotifier extends StateNotifier<AuthState> {
      }else{
        userId = userNotifier.userId ?? "";
        device = userNotifier.deviceId??"";
+       token = userNotifier.token??"";
 
        debugPrint("🟢 APP SIDE LOGOUT");
        debugPrint("userId(from prefs): $userId");
@@ -194,6 +196,11 @@ class AuthNotifier extends StateNotifier<AuthState> {
         "user_id": userId,
         "device_id": device,
       };
+
+      if (!isLoginScreen && token.isNotEmpty) {
+        data["token"] = token;
+      }
+
       debugPrint("📤 LOGOUT API DATA: $data");
 
       final res = await _repo.logoutActiveDevice(data);
@@ -214,7 +221,7 @@ class AuthNotifier extends StateNotifier<AuthState> {
     } catch (e) {
       state = state.copyWith(isLoading: false);
       debugPrint("logoutActiveDevice error: $e");
-      return 3;
+      return 4;
     }
   }
 
@@ -272,7 +279,7 @@ class AuthNotifier extends StateNotifier<AuthState> {
     } catch (e) {
       state = state.copyWith(isLoading: false);
       debugPrint("allBannerApi error: $e");
-      rethrow;
+      // rethrow;
     }
   }
 

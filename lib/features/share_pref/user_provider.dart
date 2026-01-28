@@ -1,5 +1,13 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/legacy.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:stream4videos/core/provider/video/video_manager_notifier.dart';
+import 'package:stream4videos/features/auth/presentation/notifier/auth_notifier.dart';
+import 'package:stream4videos/features/profile/presentation/notifier/profile_notifier.dart';
+import 'package:stream4videos/features/share_pref/language/language_notifier.dart';
+import 'package:stream4videos/features/subscription_plan/data/repo_impl/create_paying_repo_impl.dart';
+import 'package:stream4videos/features/subscription_plan/presentation/notifier/cashfree/create_paying_notifier.dart';
 
 class User {
   final String? id;
@@ -87,16 +95,43 @@ class UserNotifier extends StateNotifier<User?> {
   }
 
 
-  static Future<void> clearAll() async {
+   Future<void> clearAll() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.clear();
   }
+
+
+  void invalidateAllProviders(WidgetRef ref) {
+    // 🔹 User related
+    ref.invalidate(authNotifierProvider);
+
+    ref.invalidate(profileNotifierProvider);
+    ref.invalidate(languageProvider);
+    ref.invalidate(paymentProvider);
+    ref.invalidate(createPayingRepoProvider);
+    ref.invalidate(videoManagerProvider);
+
+    // 🔹 Any other providers
+    // ref.invalidate(notificationProvider);
+
+    debugPrint("✅ All related providers invalidated");
+  }
+
+
+
 
   String? get token => state?.token;
   String? get userId => state?.id;
   String? get deviceId => state?.deviceId;
   bool get hasActivePlan => state?.hasActivePlan ??false;
   bool get isGuest => state?.isGuest ??false;
+
+
+  bool get isLoggedIn =>
+      state != null &&
+          state!.isGuest == false &&
+          state!.token != null &&
+          state!.token!.isNotEmpty;
 }
 
 // Provider
@@ -105,10 +140,12 @@ final userProvider = StateNotifierProvider<UserNotifier, User?>((ref) {
 });
 
 extension UserLoginCheck on User? {
+
   bool isLoginOrNot() {
     if (this == null) return false;
     if (this!.isGuest) return false;
     if ( this!.token !=null  && this!.token!.isEmpty) return false;
     return true;
   }
+
 }

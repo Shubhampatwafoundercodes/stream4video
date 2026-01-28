@@ -11,6 +11,8 @@ import 'package:stream4videos/core/res/app_text_field.dart';
 import 'package:stream4videos/core/res/constant/const_text.dart';
 import 'package:stream4videos/core/utils/global_loader/global_loader.dart';
 import 'package:stream4videos/core/utils/routes/routes_name.dart';
+import 'package:stream4videos/core/utils/validator/app_input_formatters.dart';
+import 'package:stream4videos/core/utils/validator/app_validator.dart';
 import 'package:stream4videos/core/widget/common_screen_container.dart';
 import 'package:stream4videos/features/profile/presentation/notifier/profile_notifier.dart';
 import 'package:stream4videos/generated/assets.dart';
@@ -139,6 +141,9 @@ class EditProfileScreen extends HookConsumerWidget {
                 labelText: t.profile_full_name_label,
                 hintText: t.profile_full_name_hint,
                 textInputAction: TextInputAction.next,
+                inputFormatters: AppInputFormatters.nameOnly,
+                validator: AppValidator.validateName,
+
                 controller:nameController ,
                 showClearButton: false,
               ),
@@ -154,6 +159,8 @@ class EditProfileScreen extends HookConsumerWidget {
                 keyboardType: TextInputType.emailAddress,
                 textInputAction: TextInputAction.done,
                 showClearButton: false,
+                inputFormatters: AppInputFormatters.email,
+                validator: AppValidator.validateEmail,
               ),
 
               // AppSizes.spaceH(40),
