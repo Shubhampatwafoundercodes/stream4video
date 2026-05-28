@@ -4,7 +4,7 @@ description: "This is a ott platform"
 publish_to: 'none'
 
 
-version: 3.0.0
+version: 11.0.3+13
 
 environment:
   sdk: ^3.9.2
@@ -30,7 +30,7 @@ dependencies:
   pinput: ^6.0.1
   image_picker: ^1.2.1
   firebase_core: ^4.1.1
-  cloud_firestore: ^6.0.2
+#  cloud_firestore: ^6.0.2
   firebase_messaging: ^16.0.2
   flutter_local_notifications: ^19.4.2
   share_plus:

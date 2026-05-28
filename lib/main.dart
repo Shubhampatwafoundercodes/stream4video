@@ -52,8 +52,7 @@ final providerScopeKey = GlobalKey();
      );
 
 
-  runApp(ProviderScope(
-      child: const MyApp()));
+  runApp(ProviderScope(child: const MyApp()));
 }
 
 

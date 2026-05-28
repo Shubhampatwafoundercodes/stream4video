@@ -18,15 +18,23 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<dynamic> sendOtp(String phone) async {
     final url = ApiUrls.sendOtpUrl;
-    final data = await api.getGetApiResponse(url + phone);
-    return data;
+    final data ={
+      "mobile":phone
+    };
+    final res = await api.getPostApiResponse(url,data);
+    return res;
   }
 
   @override
   Future<dynamic> verifyOtp(String phone, String otp) async {
-    final url = '${ApiUrls.verifyOtpUrl}$phone&otp=$otp';
-    final data = await api.getGetApiResponse(url);
-    return data;
+
+    final data =   {
+      "mobile": phone,
+      "otp": otp
+    };
+    // final url = '${ApiUrls.verifyOtpUrl}$phone&otp=$otp';
+    final res = await api.getPostApiResponse(ApiUrls.verifyOtpUrl,data);
+    return res;
   }
 
   @override

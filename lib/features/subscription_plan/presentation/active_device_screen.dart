@@ -169,7 +169,7 @@ class ActiveDeviceScreen extends HookConsumerWidget {
 
                               final loginResult = await ref
                                   .read(authNotifierProvider.notifier)
-                                  .logoutActiveDevice(device.deviceId);
+                                  .logoutActiveDevice(device.deviceId,isLoginScreen: true);
                               GlobalLoader.hide();
                               if (!context.mounted) return;
                               if (loginResult == 1) {

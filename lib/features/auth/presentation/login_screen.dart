@@ -200,9 +200,9 @@ class LoginScreen extends HookConsumerWidget {
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
-                padding: const EdgeInsets.fromLTRB(20, 20, 20, 40),
+                padding:  EdgeInsets.fromLTRB(20, 20, 20, 40),
                 width: double.infinity,
-                decoration: const BoxDecoration(
+                decoration:  BoxDecoration(
                   color: AppColors.primaryBackground,
                   borderRadius: BorderRadius.vertical(top: Radius.circular(22)),
                 ),
@@ -249,16 +249,18 @@ class LoginScreen extends HookConsumerWidget {
                     AppBtn(
                       title: t.continues,
                       onTap: () async {
-
                         if (!allowIfInternet(context: context, ref: ref)) return;
-
                         final isValid = formKey.currentState?.validate() ?? false;
                         if (!isValid) return;
-
                         final phone = phoneController.text.trim();
                         GlobalLoader.show( message: t.login_sendingOtp);
 
                         final success = await ref.read(authNotifierProvider.notifier).sendOtp(phone);
+
+                        print(success);
+                        print(success);
+                        print(success);
+                        print(success);
 
                         if (!context.mounted) return;
 

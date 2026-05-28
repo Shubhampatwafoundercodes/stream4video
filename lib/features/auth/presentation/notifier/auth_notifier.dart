@@ -64,7 +64,8 @@ class AuthNotifier extends StateNotifier<AuthState> {
     state = state.copyWith(isLoading: true,);
     try {
       final res = await _repo.sendOtp(phone);
-      if(res["error"]=="200"){
+      if(res["success"]==true){
+
         state = state.copyWith(isLoading: false,);
         return true;
       }else{
@@ -135,11 +136,8 @@ class AuthNotifier extends StateNotifier<AuthState> {
     try {
       final res = await _repo.verifyOtp(phone, otp);
       state = state.copyWith(isLoading: false);
-
-      final errorCode = res['error'].toString();
-      if (errorCode == "200") {
+      if (res["success"]==true ) {
         state = state.copyWith(isLoading: false);
-
         return true;
       } else {
         // toastMsg(res["msg"] ?? "OTP Verification Failed");
@@ -159,10 +157,7 @@ class AuthNotifier extends StateNotifier<AuthState> {
 
   Future<int> logoutActiveDevice(String deviceId ,{bool isLoginScreen=true}) async {
     state = state.copyWith(isLoading: true);
-
-
     try {
-
       debugPrint("🔴 logoutActiveDevice called");
       debugPrint("🔴 isLoginScreen = $isLoginScreen");
       await DeviceInfoService().getDeviceInfo();
@@ -184,14 +179,15 @@ class AuthNotifier extends StateNotifier<AuthState> {
        debugPrint("🟢 APP SIDE LOGOUT");
        debugPrint("userId(from prefs): $userId");
        debugPrint("deviceId(from device info): $device");
+
      }
+
       if (userId.isEmpty || device.isEmpty) {
         debugPrint("❌ userId or deviceId empty");
 
         state = state.copyWith(isLoading: false);
         return 3;
       }
-
       final data = {
         "user_id": userId,
         "device_id": device,

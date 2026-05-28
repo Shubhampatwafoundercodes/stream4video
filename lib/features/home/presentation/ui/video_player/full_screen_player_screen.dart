@@ -496,15 +496,6 @@ class VideoLifecycleObserver extends WidgetsBindingObserver {
 
 
 
-
-
-
-
-
-
-
-
-
 class _FullSuggestionsOverlay extends StatelessWidget {
   final VoidCallback onBack;
   final Function(String contentId) onItemTap;
